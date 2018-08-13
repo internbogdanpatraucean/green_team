@@ -9,16 +9,20 @@ import { PageHeaderComponent } from './components/shared/page-header/page-header
 import { CourseComponent } from './components/admin/course/course.component';
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { UserComponent } from './components/admin/user/user.component';
-import { LoginComponent } from './components/shared/login/login.component';
 import { HeroComponent } from './components/shared/hero/hero.component';
 import { CourseListComponent } from './components/shared/course-list/course-list.component';
 import { ChapterListComponent } from './components/shared/chapter-list/chapter-list.component';
 import { MyAccountComponent } from './components/shared/my-account/my-account.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ChapterQuestionsComponent } from './components/shared/chapter-questions/chapter-questions.component';
+import { AuthentificationComponent } from './components/shared/authentification/authentification.component';
+import { LoginComponent } from './components/shared/authentification/login/login.component';
+import { RegisterComponent } from './components/shared/authentification/register/register.component';
+import { ResetComponent } from './components/shared/authentification/reset/reset.component';
+
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'authentification', component: AuthentificationComponent },
   { path: 'account', component: MyAccountComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },
@@ -42,13 +46,16 @@ const routes: Routes = [
     CourseComponent,
     UserListComponent,
     UserComponent,
-    LoginComponent,
     HeroComponent,
     CourseListComponent,
     ChapterListComponent,
     MyAccountComponent,
     DashboardComponent,
-    ChapterQuestionsComponent
+    ChapterQuestionsComponent,
+    AuthentificationComponent,
+    LoginComponent,
+    RegisterComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,
