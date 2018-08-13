@@ -1,0 +1,14 @@
+{
+  "users": [
+    {"user_id": 1, "email": "john.doe1@assist.ro", "password": "assist1", "name": "John1", "last_name": "Doe1", "active": 1},
+    {"user_id": 2, "email": "john.doe2@assist.ro", "password": "assist2", "name": "John2", "last_name": "Doe2", "active": 1},
+    {"user_id": 3, "email": "john.doe3@assist.ro", "password": "assist3", "name": "John3", "last_name": "Doe3", "active": 1},
+    {"user_id": 4, "email": "john.doe4@assist.ro", "password": "assist4", "name": "John4", "last_name": "Doe4", "active": 1}
+  ],
+  "course": [
+    {"id": 1, "small_description": "This is one of the courses", "long_description": "This is the long description for one of the courses", "tags": "Assist1", "images": "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png"},
+    {"id": 2, "small_description": "This is one of the courses", "long_description": "This is the long description for one of the courses", "tags": "Assist2", "images": "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png"},
+    {"id": 3, "small_description": "This is one of the courses", "long_description": "This is the long description for one of the courses", "tags": "Assist3", "images": "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png"},
+    {"id": 4, "small_description": "This is one of the courses", "long_description": "This is the long description for one of the courses", "tags": "Assist4", "images": "https://pbs.twimg.com/media/CXvJX8TWcAAS0Ax.png"}
+  ]
+}
