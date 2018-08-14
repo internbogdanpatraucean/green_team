@@ -11,5 +11,4 @@ export class ResetComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

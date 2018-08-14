@@ -1,0 +1,80 @@
+.bg {
+  /* The image used */
+  background-image: url("../../../../../assets/bg_image_authentification.png");
+  background-color: hsl(224, 32%, 12%);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* position: absolute; */
+}
+
+.login {
+  float: right;
+  height: 20%;
+  width: 80%;
+  color: #f7f7f7;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  padding-left: 100px;
+  padding-top: 20px;
+}
+
+.welcome-back {
+  float: right;
+  height: 52px;
+  width: 50%;
+  opacity: 0.5;
+  color: #f7f7f7;
+  font-family: Roboto;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  padding-right: 200px;
+  padding-top: 450px;
+}
+
+.input-textbox {
+  height: 4.39%;
+  width: 20.83%;;
+  border: 1px solid #aeb5bb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding-top: -100px;
+}
+
+.input-textbox-group{
+  margin-bottom: 10px;
+}
+
+.sign-btn {
+  width: 20.83%;
+  border-radius: 5px;
+  background-color: #006fff;
+  margin-top: 30px;
+}
+
+.message-register {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+.login-form{
+  float:right;
+  width: 50%;
+  padding-top: 380px;
+}
+
+.forgot-password{
+  padding-top: 20px;
+  color: white;
+  font-family: Roboto;
+  padding-left: 20px;
+}
