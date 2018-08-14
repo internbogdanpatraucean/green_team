@@ -23,6 +23,9 @@ import { ResetComponent } from './components/shared/authentification/reset/reset
 
 const routes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'reset', component: ResetComponent },
   { path: 'account', component: MyAccountComponent },
   { path: 'users', component: UserListComponent },
   { path: 'users/:id', component: UserComponent },

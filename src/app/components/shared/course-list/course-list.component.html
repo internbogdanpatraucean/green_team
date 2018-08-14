@@ -1,10 +1,30 @@
 <!--
-  This is the course list component. It lists the courses that it's being passed
+  This is the course list component. It lists the courses that are being passed
   as Input(). For a user, it displays the courses of a given category. Every course
   can be opened separately by navigating to the specific course route, by id. While
   used for the admin - this component displays all the courses and offers the ability
   to create a new course, edit or remove an existing course.
 -->
-<p>
-  course-list works!
-</p>
+<form action="" class="primary-form">
+  <div class="course-image">
+      <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
+      <p class="paragraf-pick">Pick the one you like and start learning</p>
+
+  </div>
+  <div class="search-component">
+    <input type="text" name="searcg" class="search-text" placeholder="Search here...">
+    <br>
+    <button class="search-button" (click)="onClickSearch()">SEARCH</button>
+  </div>
+
+  <div class="row flex-container">
+    <a id="course1" href="#" class="col-xs-4">ASTROLOGY</a>
+    <a id="course2" href="#" class="col-xs-4">FINANCE</a>
+    <a id="course3" href="#" class="col-xs-4">GRAMMAR</a>
+    <a id="course4" href="#" class="col-xs-4">FUN FACTS</a>
+    <a id="course5" href="#" class="col-xs-4">JOKES</a>
+    <a id="course6" href="#" class="col-xs-4">LIFE HACKS</a>
+  </div>
+  <button class="button-discover" (click)="onClickDiscover()">Discover more</button>
+
+</form>

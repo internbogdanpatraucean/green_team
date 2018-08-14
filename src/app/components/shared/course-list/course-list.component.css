@@ -1,0 +1,102 @@
+.primary-form{
+    position: relative;
+}
+.course-image{
+    height: 370px;
+    background-image: url(/../../assets/bg_image_authentification.png);
+    background-color: hsl(224, 32%, 12%);
+    background-position: center;
+    position: relative;
+}
+.search-component{
+    overflow:hidden ;
+    display: table;
+    position: absolute;
+    height: 100px;
+    width: 780px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    margin-top:-50px;
+    margin-left: 250px;
+     border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+
+.search-text{
+    height: 42px;
+    width: 553px;
+    margin-top: 29px;
+    margin-left: 29px;
+    border-radius: 5px;
+    background-color: #EFF1F4;
+}
+.search-button{
+    position: absolute;;
+    height: 42px;
+    width: 140px;
+    /* vertical-align: middle; */
+    border-radius: 5px;
+    background-color: #006FFF;
+    margin-top: -43px; 
+    margin-left:611px;
+    color: #FFFFFF;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    font-weight: bold;	
+    line-height: 19px;
+    /* /* vertical-align: middle;  */
+}
+.flex-container{
+    max-width: 800px;
+    width: 100%;
+    background-color:#F6FAFC;
+    display: flex;
+       flex-wrap: wrap;
+        margin:100px auto;
+    
+}
+
+.flex-container a 
+{ 
+ background-color:#9999ff; 
+height:125px;
+color:#FFFFFF;
+font-family:Arial;
+font-size:25px;
+width: 200px;
+/* text-align: center; */
+border-radius: 5px;
+align-items: center;
+justify-content: center;
+/* display: flex; */
+/* flex-grow: 1; */
+/* width: 25%; */
+margin:20px;
+}
+.button-discover{
+    /* justify-content: center; */
+    /* display: flex; */
+    /* flex-grow: 1; */
+    position: absolute;
+    border-radius: 5px;
+    width: 10%;
+    margin-top:-80px;
+    margin-left:550px;
+    border-width: 1px;
+    border-color:blue;
+    color: #006FFF
+    /* align-items: center; */
+    /* margin-left:  */
+/* flex-grow: 1; */
+}
+.paragraf-browse{
+color:white;
+font-size: 26px;
+text-align: center;
+}
+.paragraf-pick{
+    text-align: center;
+    font-size: 16px;
+    color:blue;
+}

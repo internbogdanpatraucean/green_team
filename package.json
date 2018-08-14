@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "startDB" : "json-server db.json",
+    "startDB": "json-server db.json",
     "start": "npm run starting | npm run startDB"
   },
   "private": true,
