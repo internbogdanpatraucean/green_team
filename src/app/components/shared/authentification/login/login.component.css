@@ -108,3 +108,14 @@
   justify-content: center;
   font-family: Roboto;
 }
+
+.btn-show-pass{
+  position: absolute;
+  margin-top: 1px;
+  border:none;
+  color: #006fff;
+  margin-left: -45px;
+  font-size: 14px;
+  height:15px;
+  background-color: transparent;
+}

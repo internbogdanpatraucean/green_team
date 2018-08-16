@@ -21,9 +21,9 @@
         </div>
         <div class="form-group input-textbox-group">
           <label for="InputPassword"></label>
-          <input  [(ngModel)]="person.password" name="password" type="password" class="form-control input-textbox" id="InputPassword"
+          <input  [(ngModel)]="person.password" name="password" type="{{ person.passType}}" class="form-control input-textbox" id="InputPassword"
           />
-          <button class="btn"><i class="fa fa-home"></i></button>
+          <button class="btn btn-show-pass" (click)="showHidePassword()"><i class="fa fa-eye"></i></button>
           <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPassEmpty || !errorMessage.isPassValid'[innerHTML]="errorMessage.msgPass"></p>
         </div>
         <button type="submit" class="btn btn-primary sign-btn" (click)="checkData()">SIGN IN</button>

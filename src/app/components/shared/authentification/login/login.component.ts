@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit {
   public person = {
     email: '',
     password: '',
+    passType: 'password'
   };
 
   public errorMessage = {
@@ -41,6 +42,14 @@ export class LoginComponent implements OnInit {
 
   checkPasswordDB(): boolean {
     return this.person.password === '123';
+  }
+
+  showHidePassword() {
+    if (this.person.passType === 'text') {
+        this.person.passType = 'password';
+      } else {
+        this.person.passType = 'text';
+      }
   }
 
   checkData() {
