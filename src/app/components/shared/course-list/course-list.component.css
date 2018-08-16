@@ -1,5 +1,6 @@
 .primary-form{
     position: relative;
+    background-color: #F6FAFC;
 }
 .course-image{
     height: 370px;
@@ -49,11 +50,11 @@
 }
 .flex-container{
     max-width: 800px;
-    width: 100%;
+    /* width: 100%; */
     background-color:#F6FAFC;
     display: flex;
-       flex-wrap: wrap;
-        margin:100px auto;
+    flex-wrap: wrap;
+    margin:100px auto;
     
 }
 
