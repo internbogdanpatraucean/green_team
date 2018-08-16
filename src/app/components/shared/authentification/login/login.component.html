@@ -8,27 +8,29 @@
     </div>
 
 
-    <!--reset form-->
+    <!--login form-->
 
     <div class="login-form col-xs-12 col-lg-6 ">
       <form name="login_form">
+        <p id="generic-error" class="text-danger generic-err" *ngIf='errorMessage.isServerError' [innerHTML]="errorMessage.msgGeneric"></p>
         <div class="form-group input-textbox-group">
           <label for="InputEmail1"></label>
           <input  [(ngModel)]="person.email" name="email" type="email" class="form-control input-textbox" id="InputEmail1" aria-describedby="emailHelp"
             placeholder="email adress" />
-          <p id="email-error" class="err text-danger" *ngIf='!isEmailValid'>email not found |  <a [routerLink]=" ['/register']">Register?</a></p>
+          <p id="email-error" class="err text-danger" *ngIf=' errorMessage.isEmailEmpty || !errorMessage.isEmailValid' [innerHTML]="errorMessage.msgEmail"></p>
         </div>
         <div class="form-group input-textbox-group">
           <label for="InputPassword"></label>
           <input  [(ngModel)]="person.password" name="password" type="password" class="form-control input-textbox" id="InputPassword"
           />
-          <p id="pass-error" class="err text-danger" *ngIf='!isPassValid'>password incorrect</p>
+          <button class="btn"><i class="fa fa-home"></i></button>
+          <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPassEmpty || !errorMessage.isPassValid'[innerHTML]="errorMessage.msgPass"></p>
         </div>
         <button type="submit" class="btn btn-primary sign-btn" (click)="checkData()">SIGN IN</button>
         <div class="forgot-password">
           <p>Forgot password?
             <u>
-              <a [routerLink]=" ['/reset']">Reset it</a>
+              <a href="/reset">Reset it</a>
             </u>
           </p>
         </div>
