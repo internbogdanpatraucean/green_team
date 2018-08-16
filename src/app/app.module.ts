@@ -21,6 +21,7 @@ import { RegisterComponent } from './components/shared/authentification/register
 import { ResetComponent } from './components/shared/authentification/reset/reset.component';
 
 
+
 const routes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'login', component: LoginComponent},
@@ -64,7 +65,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    [RouterModule.forRoot(routes)]
   ],
   providers: [],
   bootstrap: [AppComponent]
