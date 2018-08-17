@@ -8,7 +8,7 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
 })
 export class RegisterComponent implements OnInit {
 
-  public isTermsChecked = true;
+  public isTermsChecked = false;
 
   public newUser = {
     first_name: '',
@@ -50,6 +50,7 @@ export class RegisterComponent implements OnInit {
 
   setTerms(e) {
     this.isTermsChecked =  e.target.checked;
+    this.newUser.agreeWithTerms = e.target.checked;
   }
 
 
@@ -85,8 +86,10 @@ export class RegisterComponent implements OnInit {
 
     this.newUser.agreeWithTerms = this.isTermsChecked;
   }
+
   createUser() {
     this.validateData();
-    console.log('sadsada');
+
+    // send data to the server
   }
 }
