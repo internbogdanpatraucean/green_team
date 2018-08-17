@@ -9,26 +9,31 @@
     <!--reset form-->
     <div class="register-form col-xs-12 col-lg-6 ">
       <form>
+        <p id="generic-error" class="text-danger generic-err" *ngIf='errorMessage.isGenericError' [innerHTML]="errorMessage.genericErr_msg"></p>
         <div class="form-group input-textbox-group">
           <label for="InputFirstName"></label>
-          <input type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name">
+          <input [(ngModel)] = "newUser.first_name" name="first_name" type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name">
+          <p id="first-name-error" class="err text-danger" *ngIf=' errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid' [innerHTML]="errorMessage.first_name_msg"></p>
         </div>
         <div class="form-group input-textbox-group">
             <label for="InputLastName"></label>
-            <input type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name">
+            <input [(ngModel)]="newUser.last_name" name="last_name" type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name">
+            <p id="last-name-error" class="err text-danger" *ngIf=' errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid' [innerHTML]="errorMessage.last_name_msg"></p>
           </div>
         <div class="form-group input-textbox-group">
           <label for="InputEmail1"></label>
-          <input type="email" class="form-control input-textbox" id="InputEmail1" aria-describedby="emailHelp" placeholder="email adress">
+          <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control input-textbox" id="InputEmail1" aria-describedby="emailHelp" placeholder="email adress">
+          <p id="email-error" class="err text-danger" *ngIf=' errorMessage.isEmailEmpty || !errorMessage.isEmailValid' [innerHTML]="errorMessage.email_msg"></p>
         </div>
         <div class="form-group input-textbox-group">
           <label for="InputPassword"></label>
-          <input type="password" class="form-control input-textbox" id="InputPassword" placeholder="new password">
+          <input [(ngModel)]="newUser.password" name="password" type="password" class="form-control input-textbox" id="InputPassword" placeholder="new password">
+          <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid' [innerHTML]="errorMessage.password_msg"></p>
         </div>
-        <button type="submit" class="btn btn-primary register-btn">CREATE ACCOUNT</button>
+        <button type="submit" class="btn btn-primary register-btn" (click)="createUser()">CREATE ACCOUNT</button>
         <div class="form-check check-square">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label check-me" for="exampleCheck1"> I agree with Terms & Conditions</label>
+            <input  type="checkbox" class="form-check-input" id="exampleCheck" (change)="setTerms($event)">
+            <label class="form-check-label check-me" for="exampleCheck" [ngClass]="newUser.agreeWithTerms ? 'check-me' : 'check-me-error'"> I agree with Terms & Conditions</label>
           </div>
       </form>
     </div>

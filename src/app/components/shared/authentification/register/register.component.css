@@ -87,7 +87,31 @@
     margin-left: 1%;
 }
 
+.check-me-error {
+  height: 1.56%;
+    width: 25.82%;
+    color: red;
+    font-family: "Roboto", sans-serif;
+    font-size: 100%;
+    margin-left: 1%;
+}
+
 .check-square{
   margin-top: 15px;
   margin-left: 3.5%;;
+}
+
+.err{
+  display: inline;
+  padding-left: 20px;;
+  font-size: 15px;
+  font-family: Roboto;
+}
+
+.generic-err{
+  padding-left: 45px;;
+  font-size: 15px;
+  max-width: 250px;
+  justify-content: center;
+  font-family: Roboto;
 }

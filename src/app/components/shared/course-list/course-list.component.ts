@@ -23,31 +23,31 @@ export class CourseListComponent implements OnInit {
     'sfafsa',
     'sfafa'
   ]
-  
+
   newCategories = this.categories.slice(0,6);
   searchName = '';
   index=6;
 
   ngOnInit() {
   }
-  
+
   onClickSearch() {
     this.newCategories =[];
     for( var i=0;i<this.categories.length;i++){
-      if(this.searchName!="" && this.categories[i].toLowerCase().indexOf(this.searchName.toLowerCase()) != -1){
+      if(this.searchName!= "" && this.categories[i].toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
         this.newCategories.push(this.categories[i]);
-        console.log("Exista");
+        console.log('Exista');
       }
     }
   }
 
 
   onClickDiscover() {
-    
+
     this.newCategories = this.categories.slice(this.index,this.index+6);
     this.index+=6;
-    this.searchName="";
-    if(this.categories.indexOf===)
+    this.searchName='';
+    // if(this.categories.indexOf===)
 
     }
   }

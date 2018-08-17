@@ -118,4 +118,9 @@
   font-size: 14px;
   height:15px;
   background-color: transparent;
+  outline: none;
+}
+
+.btn :active {
+  outline: none;
 }
