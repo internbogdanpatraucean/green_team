@@ -1,100 +1,104 @@
 .primary-form{
     position: relative;
     background-color: #F6FAFC;
+    height: 100%;
 }
 .course-image{
+    /* max-width: 800px; */
     height: 370px;
+    width: 100%;
     background-image: url(/../../assets/bg_image_authentification.png);
     background-color: hsl(224, 32%, 12%);
     background-position: center;
     position: relative;
+text-align: center;
+
+    
 }
 .search-component{
     overflow:hidden ;
-    display: table;
+    /* display: table; */
     position: absolute;
     height: 100px;
-    width: 780px;
+    width: 78%;
     border-radius: 5px;
     background-color: #FFFFFF;
-    margin-top:-50px;
-    margin-left: 250px;
+    margin-top:325px;
+    margin-left:11%;
      border-style: solid;
     border-color: white;
     border-width: 2px;
+    /* display: flex;
+    flex-wrap: wrap; */
+    margin-bottom: 50px;
 }
 
 .search-text{
     height: 42px;
-    width: 553px;
+    width: 75%;
     margin-top: 29px;
-    margin-left: 29px;
     border-radius: 5px;
     background-color: #EFF1F4;
+    
 }
 .search-button{
-    position: absolute;;
     height: 42px;
-    width: 140px;
-    /* vertical-align: middle; */
+    width: 15%;
+    margin-left:5%;
+    margin-top: -29px; 
     border-radius: 5px;
-    background-color: #006FFF;
-    margin-top: -43px; 
-    margin-left:611px;
+    /* background-color: #006FFF; */
     color: #FFFFFF;	
     font-family: Roboto;	
     font-size: 16px;	
     font-weight: bold;	
     line-height: 19px;
-    /* /* vertical-align: middle;  */
+
 }
 .flex-container{
     max-width: 800px;
     /* width: 100%; */
+    position: relative;
     background-color:#F6FAFC;
-    display: flex;
-    flex-wrap: wrap;
-    margin:100px auto;
+height:125px;
+color:#FFFFFF;
+font-family:Arial;
+font-size:25px;
+text-align: center;
+border-radius: 5px;
+    margin:100px auto 20px  ;
+width: 30%;
+margin:10px;
+margin-top:70px;
     
 }
 
 .flex-container a 
 { 
- background-color:#9999ff; 
-height:125px;
-color:#FFFFFF;
-font-family:Arial;
-font-size:25px;
-width: 200px;
-/* text-align: center; */
-border-radius: 5px;
+background-color:#9999ff; 
+
 align-items: center;
 justify-content: center;
-/* display: flex; */
-/* flex-grow: 1; */
-/* width: 25%; */
-margin:20px;
+/* margin-top:40px; */
 }
 .button-discover{
-    /* justify-content: center; */
-    /* display: flex; */
-    /* flex-grow: 1; */
+    display: flex;
     position: absolute;
     border-radius: 5px;
     width: 10%;
-    margin-top:-80px;
-    margin-left:550px;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-left:45%;
     border-width: 1px;
     border-color:blue;
     color: #006FFF
-    /* align-items: center; */
-    /* margin-left:  */
-/* flex-grow: 1; */
 }
 .paragraf-browse{
+    margin-top: 140px;
 color:white;
 font-size: 26px;
-text-align: center;
+display: inline-block;
+  vertical-align: middle;
 }
 .paragraf-pick{
     text-align: center;

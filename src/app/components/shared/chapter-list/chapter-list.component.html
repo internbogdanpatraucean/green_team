@@ -2,6 +2,32 @@
   This is the component that lists the chapters of a course. Every chapter has a
   description and a button that links to the chapter questions (based on an id).
 -->
-<p>
-  chapter-list works!
-</p>
+
+<form action="" class="primary-form">
+  <!-- <div class="col-xs-12 "> -->
+    <div class="chapter-image">
+      <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
+      <p class="paragraf-pick">Pick the one you like and start learning</p>
+    </div>
+  <!-- </div> -->
+
+  <!-- <div class="col-xs-4 search-component">
+    <input type="text" class="search-text" [(ngModel)]="searchName" name="searchName" placeholder="Search here...">
+    <button class="search-button" (click)="onClickSearch()">SEARCH</button>
+  </div> -->
+
+  <div class="chapter-div">
+    <a [href]="chapter.adresa">
+    <div action="" class="col-xs-6 flex-container"  *ngFor="let chapter of newChapter">
+      <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + chapter.imagePath + ')'}">
+      </div>
+      <div class="row Descriere-div">
+        <p> {{chapter.name}} </p>
+        <p>{{chapter.descriere}}</p>
+      </div>
+      
+    </div>
+  </a>
+    <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
+  </div>
+</form>
