@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ValidationService} from 'src/app/services/validation/validation.service';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -23,17 +25,9 @@ export class LoginComponent implements OnInit {
     msgGeneric: 'Data not found on the server'
   };
 
-  constructor() {}
+  constructor(private validation: ValidationService) {}
 
   ngOnInit() {
-  }
-
-  checkEmptyEmail(): boolean {
-    return this.person.email === '';
-  }
-
-  checkEmptyPass(): boolean {
-    return this.person.password === '';
   }
 
   checkEmailDB(): boolean {
@@ -54,28 +48,28 @@ export class LoginComponent implements OnInit {
 
   checkData() {
 
-    if (this.checkEmptyEmail()) {
+    if (this.validation.checkEmpty(this.person.email)) {
       this.errorMessage.isEmailEmpty =  true;
       this.errorMessage.msgEmail = 'email required';
     } else {
       this.errorMessage.isEmailEmpty =  false;
     }
 
-    if (this.checkEmptyPass()) {
+    if (this.validation.checkEmpty(this.person.password)) {
       this.errorMessage.isPassEmpty =  true;
       this.errorMessage.msgPass = 'password required';
     } else {
       this.errorMessage.isPassEmpty = false;
     }
 
-    if (!this.checkEmailDB() && !this.checkEmptyEmail()) {
+    if (!this.checkEmailDB() && !this.errorMessage.isEmailEmpty) {
       this.errorMessage.isEmailValid = false;
       this.errorMessage.msgEmail = `email not found |  <a href="/register">Register?</a>`;
     } else {
       this.errorMessage.isEmailValid = true;
     }
 
-    if (!this.checkPasswordDB() && !this.checkEmptyPass()) {
+    if (!this.checkPasswordDB() && !this.errorMessage.isPassEmpty) {
       this.errorMessage.isPassValid = false;
       this.errorMessage.msgPass = 'password incorrect';
     } else {
