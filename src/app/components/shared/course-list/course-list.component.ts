@@ -10,7 +10,7 @@ import { splitAtColon } from '@angular/compiler/src/util';
 })
 export class CourseListComponent implements OnInit {
   // public var numeCurs:string ='java';
- 
+
   course: Course[] = [
     new Course('Energy', '#', 'blue'),
     new Course('Astrology', '#', 'yellow'),
@@ -32,6 +32,8 @@ export class CourseListComponent implements OnInit {
     new Course('Java', '#', 'red')
   ];
   newCourses:Course[] = this.course.slice(0, 6);
+  newCategories = this.categories.slice(0, 6);
+
   searchName = '';
   index = 6;
 
@@ -65,17 +67,16 @@ export class CourseListComponent implements OnInit {
   value = 0;
 
   onClickDiscover() {
-    console.log(this.colorOne,this.colotTwo);
-    
+
     this.newCourses = this.course.slice(this.index, this.index + 6);
     this.index += 6;
     this.searchName = "";
     if (this.index >= this.course.length) {
       this.index = 0;
 
+
     }
     
   }
 
-}
 
