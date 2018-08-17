@@ -7,7 +7,6 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   public isTermsChecked = false;
 
   public newUser = {
@@ -15,17 +14,18 @@ export class RegisterComponent implements OnInit {
     last_name: '',
     email: '',
     password: '',
+    passType: 'password',
     agreeWithTerms: true
   };
 
   public errorMessage = {
-    isEmailEmpty: true,
+    isEmailEmpty: false,
     isEmailValid: true,
-    isPasswordEmpty: true,
+    isPasswordEmpty: false,
     isPasswordValid: true,
-    isFirstNameEmpty: true,
+    isFirstNameEmpty: false,
     isFirstNameValid: true,
-    isLastNameEmpty: true,
+    isLastNameEmpty: false,
     isLastNameValid: true,
     isGenericError: false,
     first_name_msg: '',
@@ -35,10 +35,9 @@ export class RegisterComponent implements OnInit {
     genericErr_msg: 'O eroare generica nonoonon'
   };
 
-  constructor(private validation: ValidationService) { }
+  constructor(private validation: ValidationService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   checkFirstNameEmpty(): boolean {
     return this.newUser.first_name === '';
@@ -49,11 +48,34 @@ export class RegisterComponent implements OnInit {
   }
 
   setTerms(e) {
-    this.isTermsChecked =  e.target.checked;
+    this.isTermsChecked = e.target.checked;
     this.newUser.agreeWithTerms = e.target.checked;
   }
 
+  showHidePassword() {
+    if (this.newUser.passType === 'text') {
+        this.newUser.passType = 'password';
+      } else {
+        this.newUser.passType = 'text';
+      }
+  }
 
+  isLetter(input: string): boolean {
+    const verifier =  new RegExp(/^[A-Za-z]/, 'i');
+    return verifier.test(input);
+  }
+
+  isEmailValid(input: string): boolean {
+    const verifier = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}/);
+    console.log(input);
+    console.log(verifier.test(input));
+    return verifier.test(input);
+  }
+
+  isPasswordValid(input: string): boolean {
+     const verifier = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
+     return verifier.test(input);
+    }
 
   validateData() {
     if (this.checkFirstNameEmpty()) {
@@ -64,20 +86,20 @@ export class RegisterComponent implements OnInit {
     }
 
     if (this.checkLastNameEmpty()) {
-      this.errorMessage.isLastNameEmpty =  true;
+      this.errorMessage.isLastNameEmpty = true;
       this.errorMessage.last_name_msg = 'required';
     } else {
       this.errorMessage.isLastNameEmpty = false;
     }
 
-    if (this.validation.checkEmptyEmail(this.newUser.email)) {
+    if (this.validation.checkEmpty(this.newUser.email)) {
       this.errorMessage.isEmailEmpty = true;
       this.errorMessage.email_msg = 'required';
     } else {
-      this.errorMessage.isEmailEmpty =  false;
+      this.errorMessage.isEmailEmpty = false;
     }
 
-    if (this.validation.checkEmptyPassword(this.newUser.password)) {
+    if (this.validation.checkEmpty(this.newUser.password)) {
       this.errorMessage.isPasswordEmpty = true;
       this.errorMessage.password_msg = 'required';
     } else {
@@ -85,11 +107,45 @@ export class RegisterComponent implements OnInit {
     }
 
     this.newUser.agreeWithTerms = this.isTermsChecked;
+
+    if (!this.isLetter(this.newUser.first_name) && !this.errorMessage.isFirstNameEmpty) {
+      this.errorMessage.isFirstNameValid = false;
+      this.errorMessage.first_name_msg = 'only characters allowed';
+    } else {
+      this.errorMessage.isFirstNameValid = true;
+    }
+
+    if (!this.isLetter(this.newUser.last_name) && !this.errorMessage.isLastNameEmpty) {
+      this.errorMessage.isLastNameValid = false;
+      this.errorMessage.last_name_msg = 'only characters allowed';
+    } else {
+      this.errorMessage.isLastNameValid = true;
+    }
+
+    if (!this.isEmailValid(this.newUser.email) && !this.errorMessage.isEmailEmpty) {
+      this.errorMessage.email_msg = 'email not valid';
+      this.errorMessage.isEmailValid = false;
+    } else {
+      this.errorMessage.isEmailValid = true;
+    }
+
+    if (!this.isPasswordValid(this.newUser.password) && !this.errorMessage.isPasswordEmpty) {
+      this.errorMessage.password_msg = 'weak password';
+      this.errorMessage.isPasswordValid = false;
+     } else {
+       this.errorMessage.isPasswordValid = true;
+     }
   }
 
   createUser() {
     this.validateData();
-
-    // send data to the server
+    if (!this.errorMessage.isFirstNameEmpty && !this.errorMessage.isLastNameEmpty && !this.errorMessage.isEmailEmpty
+      && !this.errorMessage.isPasswordEmpty && this.newUser.agreeWithTerms && this.errorMessage.isFirstNameValid
+      && this.errorMessage.isLastNameValid && this.errorMessage.isEmailValid) {
+      console.log('tat ii bun');
+      // send data to the server
+    } else {
+      console.log('nu-i bun');
+    }
   }
 }

@@ -12,28 +12,29 @@
         <p id="generic-error" class="text-danger generic-err" *ngIf='errorMessage.isGenericError' [innerHTML]="errorMessage.genericErr_msg"></p>
         <div class="form-group input-textbox-group">
           <label for="InputFirstName"></label>
-          <input [(ngModel)] = "newUser.first_name" name="first_name" type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name">
-          <p id="first-name-error" class="err text-danger" *ngIf=' errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid' [innerHTML]="errorMessage.first_name_msg"></p>
+          <input [(ngModel)] = "newUser.first_name" name="first_name" type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name" [ngClass]="errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
+          <p id="first-name-error" class="err text-danger" *ngIf='errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid' [innerHTML]="errorMessage.first_name_msg"></p>
         </div>
         <div class="form-group input-textbox-group">
             <label for="InputLastName"></label>
-            <input [(ngModel)]="newUser.last_name" name="last_name" type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name">
+            <input [(ngModel)]="newUser.last_name" name="last_name" type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name" [ngClass]="errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
             <p id="last-name-error" class="err text-danger" *ngIf=' errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid' [innerHTML]="errorMessage.last_name_msg"></p>
           </div>
         <div class="form-group input-textbox-group">
           <label for="InputEmail1"></label>
-          <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control input-textbox" id="InputEmail1" aria-describedby="emailHelp" placeholder="email adress">
+          <input [(ngModel)]="newUser.email" name="email" type="email" class="form-control input-textbox" id="InputEmail1" aria-describedby="emailHelp" placeholder="email adress" [ngClass]="errorMessage.isEmailEmpty || !errorMessage.isEmailValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
           <p id="email-error" class="err text-danger" *ngIf=' errorMessage.isEmailEmpty || !errorMessage.isEmailValid' [innerHTML]="errorMessage.email_msg"></p>
         </div>
         <div class="form-group input-textbox-group">
           <label for="InputPassword"></label>
-          <input [(ngModel)]="newUser.password" name="password" type="password" class="form-control input-textbox" id="InputPassword" placeholder="new password">
+          <input [(ngModel)]="newUser.password" name="password" type="{{ newUser.passType}}" class="form-control input-textbox" id="InputPassword" placeholder="new password" [ngClass]="errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
+          <button class="btn btn-show-pass" (click)="showHidePassword()"><i class="fa fa-eye"></i></button>
           <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid' [innerHTML]="errorMessage.password_msg"></p>
         </div>
         <button type="submit" class="btn btn-primary register-btn" (click)="createUser()">CREATE ACCOUNT</button>
         <div class="form-check check-square">
             <input  type="checkbox" class="form-check-input" id="exampleCheck" (change)="setTerms($event)">
-            <label class="form-check-label check-me" for="exampleCheck" [ngClass]="newUser.agreeWithTerms ? 'check-me' : 'check-me-error'"> I agree with Terms & Conditions</label>
+            <label class="form-check-label check-me" for="exampleCheck" [ngClass]="newUser.agreeWithTerms ? 'check-me check-me-ok' : 'check-me check-me-error'"> I agree with Terms & Conditions</label>
           </div>
       </form>
     </div>

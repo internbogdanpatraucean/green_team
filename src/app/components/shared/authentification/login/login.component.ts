@@ -48,28 +48,28 @@ export class LoginComponent implements OnInit {
 
   checkData() {
 
-    if (this.validation.checkEmptyEmail(this.person.email)) {
+    if (this.validation.checkEmpty(this.person.email)) {
       this.errorMessage.isEmailEmpty =  true;
       this.errorMessage.msgEmail = 'email required';
     } else {
       this.errorMessage.isEmailEmpty =  false;
     }
 
-    if (this.validation.checkEmptyPassword(this.person.password)) {
+    if (this.validation.checkEmpty(this.person.password)) {
       this.errorMessage.isPassEmpty =  true;
       this.errorMessage.msgPass = 'password required';
     } else {
       this.errorMessage.isPassEmpty = false;
     }
 
-    if (!this.checkEmailDB() && !this.validation.checkEmptyEmail(this.person.email)) {
+    if (!this.checkEmailDB() && !this.errorMessage.isEmailEmpty) {
       this.errorMessage.isEmailValid = false;
       this.errorMessage.msgEmail = `email not found |  <a href="/register">Register?</a>`;
     } else {
       this.errorMessage.isEmailValid = true;
     }
 
-    if (!this.checkPasswordDB() && !this.validation.checkEmptyPassword(this.person.password)) {
+    if (!this.checkPasswordDB() && !this.errorMessage.isPassEmpty) {
       this.errorMessage.isPassValid = false;
       this.errorMessage.msgPass = 'password incorrect';
     } else {
