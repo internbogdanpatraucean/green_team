@@ -31,12 +31,10 @@ export class CourseListComponent implements OnInit {
     new Course('C#', '#', '/../../assets/money.jpeg', 'green'),
     new Course('Java', '#', '/../../assets/money.jpeg', 'red')
   ];
+
   newCourse: Course[] = this.course.slice(0, 6);
   searchName = '';
   index = 6;
-
-
-
   ngOnInit() {
   }
 
@@ -64,4 +62,3 @@ export class CourseListComponent implements OnInit {
     }
   }
 }
-

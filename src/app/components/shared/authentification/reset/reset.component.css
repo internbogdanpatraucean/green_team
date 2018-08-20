@@ -42,11 +42,13 @@
 
 .input-textbox {
   height: 4.39%;
-  width: 20.83%;;
+  width: 30.83%;
+  min-width: 150px;
   border: 1px solid #aeb5bb;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: white;
   padding-top: -100px;
+  display: inline;
 }
 
 .input-textbox-group{
@@ -54,10 +56,12 @@
 }
 
 .reset-btn {
-  width: 20.83%;
+  width: 30.83%;
+  min-width: 150px;
   border-radius: 5px;
   background-color: #006fff;
   margin-top: 30px;
+  padding-left: -5px;
 }
 
 .message {
@@ -70,4 +74,27 @@
   float:right;
   width: 50%;
   padding-top: 350px;
+}
+
+.err{
+  display: inline;
+  padding-left: 20px;;
+  font-size: 15px;
+  font-family: Roboto;
+}
+
+.generic-err{
+  padding-left: 45px;;
+  font-size: 15px;
+  max-width: 300px;
+  justify-content: center;
+  font-family: Roboto;
+}
+
+.generic-err-no-reset {
+  color: #c44569;
+}
+
+.generic-err-reset {
+  color: green;
 }
