@@ -1,0 +1,163 @@
+.my-account {
+  margin-top: 50px;
+}
+
+.my-account-text {
+  height: 1.95%;
+  width: 53.75%;
+  color: #06102b;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 38px;
+}
+
+.account-info-text {
+  height: 1.95%;
+  width: 53.75%;
+  color: #4a4a4a;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 38px;
+}
+
+.started-courses-text {
+  height: 1.95%;
+  width: 53.75%;
+  color: #06102b;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 38px;
+}
+
+.here-you-can-edit {
+  height: 2.36%;
+  width: 55.54%;
+  color: #aeb5bb;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+.all-sections {
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.each-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.log-out-btn {
+  height: 1.59%;
+  width: 8.89%;
+  white-space: normal;
+  border-color: transparent;
+  border-radius: 5px;
+  background-color: #006fff;
+  margin-left: 10px;
+}
+
+.standard-btn {
+  height: 1.59%;
+  width: 20.89%;
+  background-color: white;
+  color: #006fff;
+  border: 1px solid #006fff;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  display: block;
+  margin: 10px 0px 10px 5px;
+  white-space: normal;
+}
+
+.edit-btn {
+  display: inline;
+  width: 15%;
+}
+
+.save-btn {
+  background-color: white;
+  color: #006fff;
+  margin-left: 25px;
+}
+
+.cancel-btn {
+  background-color: #006fff;
+  color: white;
+}
+
+.picture-account {
+  width: 50%;
+  float: left;
+}
+
+.details-account {
+  width: 50%;
+  float: right;
+}
+
+.profile-pic {
+  height: 21.18%;
+  width: 23.72%;
+  border-radius: 5px;
+}
+
+.profile-pic-info {
+  height: 4.72%;
+  width: 50%;
+  color: #aeb5bb;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 23px;
+  display: inline;
+  float: right;
+  margin-right: 100px;
+  margin-top: 30px;
+}
+
+.account-info {
+  height: 35px;
+  width: 40.83%;
+  border: 1px solid #aeb5bb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  display: inline;
+  padding: 10px 10px 10px 10px;
+  color: #aeb5bb;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.all-inputs{
+  display: block;
+}
+
+.err{
+  display: inline;
+  padding-left: 20px;;
+  font-size: 15px;
+  font-family: Roboto;
+  color: #E74C3C;
+}
+
+.succes{
+  padding-left: 50px;;
+  font-size: 15px;
+  font-family: Roboto;
+  color: green;
+}
+
+.upload-pic {
+  float: right;
+  margin-right: 140px;
+  margin-top: -25px;
+}
