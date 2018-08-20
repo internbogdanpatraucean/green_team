@@ -73,7 +73,15 @@
 .reset-form{
   float:right;
   width: 50%;
-  padding-top: 350px;
+
+}
+
+.reset-form-no-reset {
+  margin-top: 435px;
+}
+
+.reset-form-reset {
+  margin-top: 380px;
 }
 
 .err{
