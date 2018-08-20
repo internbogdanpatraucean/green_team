@@ -12,100 +12,15 @@
     position: relative;
 text-align: center;
 }
-
 .chapter-div{
-    height: 100%;
-    background-color: #F6FAFC;
-    margin:auto;
-    display:center;
-    margin-left:16%;
-
-}
-.flex-container{
-    margin:10px;
-    position: relative;
-    width: 25%;
-    height: 388px;
-    background-color:white;
+    margin-left: 15%;
+    height: 150px;
+    border: 1px solid #AEB5BB;
     border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    border-style: solid;
-    border-width: 1px;
-    /* margin-bottom: 80px; */
-    
-}
-
-.Image-div{
-    height: 60%;
-border-radius: 5px;
-}
-.Descriere-div{
-height: 40%;
-font-family:Arial;
-font-size:25px;
-text-align: center;
-}
-
-.button-discover{
-    /* display: flex; */
-    /* position: absolute; */
-    border-radius: 5px;
-    width: 10%;
-    margin-top:3%;
-    margin-bottom:3%;
-    margin-left:35%;
-    border-width: 1px;
-    border-color:blue;
-    color: #006FFF
-
-}
-.search-component{
-    overflow:hidden ;
-    position: absolute;
-    height: 100px;
-    width: 78%;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    margin-top:325px;
-    margin-left:11%;
-     border-style: solid;
-    border-color: white;
-    border-width: 2px;
-    margin-bottom: 40px;
-}
-
-.search-text{
-    height: 42px;
-    width: 80%;
-    margin-top: 29px;
-    border-radius: 5px;
-    background-color: #EFF1F4;
-    
-}
-.search-button{
-    height: 42px;
-    width: 15%;
-    margin-left:5%;
-    margin-top: -29px; 
-    border-radius: 5px;
-    background-color: #006FFF;
-    color: #FFFFFF;	
-    font-family: Roboto;	
-    font-size: 16px;	
-    font-weight: bold;	
-    line-height: 19px;
-}
-.paragraf-browse{
-    margin-top: 140px;
-color:white;
-font-size: 26px;
-display: inline-block;
-  vertical-align: middle;
-}
-.paragraf-pick{
-    text-align: center;
-    font-size: 16px;
-    color:blue; 
-    vertical-align:middle;
-}
+    width:70%;
+    padding-left: 5%;
+    height: 40%;
+  }
+  .nrCapitol{
+      height: 20%;
+  }

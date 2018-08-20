@@ -8,74 +8,57 @@ import { splitAtColon } from '@angular/compiler/src/util';
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.css']
 })
+
 export class CourseListComponent implements OnInit {
-  // public var numeCurs:string ='java';
 
   course: Course[] = [
-    new Course('Energy', '#', 'blue'),
-    new Course('Astrology', '#', 'yellow'),
-    new Course('Jokes', '#', 'blue'),
-    new Course('Economy', '#', 'yellow'),
-    new Course('Life Hacks', '#', 'blue'),
-    new Course('Astronomy', '#', 'yellow'),
-    new Course('Matematics', '#', 'blue'),
-    new Course('Grammar', '#', 'yellow'),
-    new Course('Literature', '#', 'blue'),
-    new Course('Finance', '#', 'yellow'),
-    new Course('Robotics', '#', 'blue'),
-    new Course('Fun Facts', '#', 'yellow'),
-    new Course('Android', '#', 'blue'),
-    new Course('Fronth End', '#', 'pink'),
-    new Course('Back End', '#', 'black'),
-    new Course('Testing', '#', 'yellow'),
-    new Course('C#', '#', 'green'),
-    new Course('Java', '#', 'red')
+    new Course('Energy', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Astrology', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Jokes', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Economy', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Life Hacks', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Astronomy', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Matematics', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Grammar', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Literature', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Finance', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Robotics', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Fun Facts', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('Android', '#', '/../../assets/money.jpeg', 'blue'),
+    new Course('Fronth End', '#', '/../../assets/money.jpeg', 'pink'),
+    new Course('Back End', '#', '/../../assets/money.jpeg', 'black'),
+    new Course('Testing', '#', '/../../assets/money.jpeg', 'yellow'),
+    new Course('C#', '#', '/../../assets/money.jpeg', 'green'),
+    new Course('Java', '#', '/../../assets/money.jpeg', 'red')
   ];
-  newCourses:Course[] = this.course.slice(0, 6);
 
+  newCourse: Course[] = this.course.slice(0, 6);
   searchName = '';
   index = 6;
-
-  //de rezolvat random-ul
-  colours=['blue','yellow','green','orange','red','pink'];
-  colorOne=this.colours[Math.floor(Math.random()* this.colours.length)];
-  colotTwo=this.colours[Math.floor(Math.random()* this.colours.length)];
-
-  getRandomColor(){
-    let firstGradient = this.randomNumber(10,50);
-    return "linear-gradient(130deg, "+this.colours[this.randomNumber(0,5)]+" "+firstGradient+"%, "+this.colours[this.randomNumber(0,5)] + ")"
-  }
-
-  randomNumber(min,max){
-    return Math.floor((Math.random() * max) + min);
-  }
   ngOnInit() {
   }
 
-  onClickSearch() {
-    this.newCourses = [];
-    for (var i = 0; i < this.course.length; i++) {
-      if (this.searchName != "" && this.course[i].name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
-        this.newCourses.push(this.course[i]);
-        console.log("Exista");
-      }
-      else if (this.searchName != this.course[i].name)
-        console.log("Nume incorect.Rescrie!");
-    }
-  }
-  value = 0;
+  // onClickSearch() {
+
+  //   this.newChapter = [];
+  //   for (var i = 0; i < this.chapter.length; i++) {
+  //     if (this.searchName != "" && this.chapter[i].name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
+  //       this.newChapter.push(this.chapter[i]);
+  //       console.log("Exista");
+  //     }
+  //     else if (this.searchName != this.chapter[i].name)
+  //       console.log("Nume incorect.Rescrie!");
+  //   }
+  // }
 
   onClickDiscover() {
+    // console.log(this.chapter.descriere);
 
-    this.newCourses = this.course.slice(this.index, this.index + 6);
+    this.newCourse = this.course.slice(this.index, this.index + 6);
     this.index += 6;
     this.searchName = "";
     if (this.index >= this.course.length) {
       this.index = 0;
-
-
     }
-
   }
-
 }

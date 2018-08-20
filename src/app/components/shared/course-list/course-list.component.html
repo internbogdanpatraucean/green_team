@@ -5,27 +5,26 @@
   used for the admin - this component displays all the courses and offers the ability
   to create a new course, edit or remove an existing course.
 -->
+
 <form action="" class="primary-form">
-  <div class="col-xs-12 ">
+  
     <div class="course-image">
       <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
       <p class="paragraf-pick">Pick the one you like and start learning</p>
-      <p id="demo"></p>
     </div>
-  </div>
-  <div class="col-xs-4 search-component">
-    <input type="text" class="search-text" [(ngModel)]="searchName" name="searchName" placeholder="Search here...">
-    <button class="search-button" (click)="onClickSearch()">SEARCH</button>
-  </div>
-  <div class="container ">
-    <!-- <div class="row"> -->
-        <a id="course1" [href]="course.adresa" >
-      <div class="col-xs-4 flex-container" [ngStyle]="{background:getRandomColor()}" *ngFor="let course of newCourses ">
-        <p>{{course.name}}</p>
-      <!-- </div> -->
+  
+  <div class="course-div">
+    <a [href]="course.adresa">
+    <div action="" class="col-xs-6 flex-container"  *ngFor="let course of newCourse">
+      <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + course.imagePath + ')'}">
+      </div>
+      <div class="row Descriere-div">
+        <p> {{course.name}} </p>
+        <p>{{course.descriere}}</p>
+      </div>
+      
     </div>
   </a>
+    <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
   </div>
-  <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
-
 </form>
