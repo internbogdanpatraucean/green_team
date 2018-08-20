@@ -33,6 +33,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
   { path: 'chapters', component: ChapterListComponent },
+  { path: 'chapter-questions', component: ChapterQuestionsComponent },
+
   {
     path: 'courses/:id',
     component: ChapterListComponent

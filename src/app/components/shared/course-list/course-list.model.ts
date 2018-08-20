@@ -1,12 +1,14 @@
-export class Course{
-     public name:string;
-     public adresa:string;
-     public color:string;
-    
-     constructor(name:string, adresa:string,color:string){
-         this.name=name;
-         this.adresa=adresa;
-         this.color=color;
-         
-     }
+export class Course {
+    public name: string;
+    public adresa: string;
+    public imagePath: string;
+    public descriere: string;
+
+    constructor(name: string, adresa: string, imagePath: string, descriere: string) {
+        this.name = name;
+        this.adresa = adresa;
+        this.imagePath = imagePath;
+        this.descriere = descriere;
+
+    }
 }
