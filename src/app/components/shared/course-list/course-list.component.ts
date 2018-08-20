@@ -32,7 +32,6 @@ export class CourseListComponent implements OnInit {
     new Course('Java', '#', 'red')
   ];
   newCourses:Course[] = this.course.slice(0, 6);
-  newCategories = this.categories.slice(0, 6);
 
   searchName = '';
   index = 6;
@@ -76,7 +75,7 @@ export class CourseListComponent implements OnInit {
 
 
     }
-    
+
   }
 
-
+}
