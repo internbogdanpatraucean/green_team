@@ -14,7 +14,9 @@ export class ResetComponent implements OnInit {
   public resetPassword = {
     userEmail: '',
     userNewPassword: '',
-    userConfirmPassword: ''
+    userConfirmPassword: '',
+    passType1: 'password',
+    passType2: 'password'
   };
 
   errorMessage = {
@@ -34,6 +36,22 @@ export class ResetComponent implements OnInit {
   constructor(private validation: ValidationService) {}
 
   ngOnInit() {}
+
+  showHidePassword1() {
+       if (this.resetPassword.passType1 === 'text') {
+        this.resetPassword.passType1 = 'password';
+      } else {
+        this.resetPassword.passType1 = 'text';
+      }
+  }
+
+  showHidePassword2() {
+    if (this.resetPassword.passType2 === 'text') {
+     this.resetPassword.passType2 = 'password';
+   } else {
+     this.resetPassword.passType2 = 'text';
+   }
+}
 
   isEmailExisting(): boolean {
     // process request to the server
