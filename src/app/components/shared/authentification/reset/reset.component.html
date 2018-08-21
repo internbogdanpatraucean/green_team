@@ -7,7 +7,7 @@
     </div>
 
     <!--reset form-->
-    <div class="reset-form">
+    <div [ngClass]="!isUserResetting ? 'reset-form reset-form-no-reset' : 'reset-form reset-form-reset'">
         <form>
         <p id="generic-error" [ngClass]="isEmailSentMessage ? 'generic-err generic-err-reset' : 'generic-err generic-err-no-reset'" *ngIf='errorMessage.isGenericError' [innerHTML]="errorMessage.generic_msg"></p>
         <div [hidden]="isUserResetting" class="form-group input-textbox-group">
