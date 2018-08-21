@@ -40,14 +40,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
-  checkFirstNameEmpty(): boolean {
-    return this.newUser.first_name === '';
-  }
-
-  checkLastNameEmpty(): boolean {
-    return this.newUser.last_name === '';
-  }
-
   setTerms(e) {
     this.isTermsChecked = e.target.checked;
     this.newUser.agreeWithTerms = e.target.checked;
@@ -61,29 +53,15 @@ export class RegisterComponent implements OnInit {
       }
   }
 
-  isLetter(input: string): boolean {
-    const verifier =  new RegExp(/^[A-Za-z]/, 'i');
-    return verifier.test(input);
-  }
-
-  isEmailValid(input: string): boolean {
-    const verifier = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}/);
-    console.log(input);
-    console.log(verifier.test(input));
-    return verifier.test(input);
-  }
-
-
-
   validateData() {
-    if (this.checkFirstNameEmpty()) {
+    if (this.validation.checkEmpty(this.newUser.first_name)) {
       this.errorMessage.isFirstNameEmpty = true;
       this.errorMessage.first_name_msg = 'required';
     } else {
       this.errorMessage.isFirstNameEmpty = false;
     }
 
-    if (this.checkLastNameEmpty()) {
+    if (this.validation.checkEmpty(this.newUser.last_name)) {
       this.errorMessage.isLastNameEmpty = true;
       this.errorMessage.last_name_msg = 'required';
     } else {
@@ -106,21 +84,21 @@ export class RegisterComponent implements OnInit {
 
     this.newUser.agreeWithTerms = this.isTermsChecked;
 
-    if (!this.isLetter(this.newUser.first_name) && !this.errorMessage.isFirstNameEmpty) {
+    if (!this.validation.isLetter(this.newUser.first_name) && !this.errorMessage.isFirstNameEmpty) {
       this.errorMessage.isFirstNameValid = false;
       this.errorMessage.first_name_msg = 'only characters allowed';
     } else {
       this.errorMessage.isFirstNameValid = true;
     }
 
-    if (!this.isLetter(this.newUser.last_name) && !this.errorMessage.isLastNameEmpty) {
+    if (!this.validation.isLetter(this.newUser.last_name) && !this.errorMessage.isLastNameEmpty) {
       this.errorMessage.isLastNameValid = false;
       this.errorMessage.last_name_msg = 'only characters allowed';
     } else {
       this.errorMessage.isLastNameValid = true;
     }
 
-    if (!this.isEmailValid(this.newUser.email) && !this.errorMessage.isEmailEmpty) {
+    if (!this.validation.isEmailValid(this.newUser.email) && !this.errorMessage.isEmailEmpty) {
       this.errorMessage.email_msg = 'email not valid';
       this.errorMessage.isEmailValid = false;
     } else {

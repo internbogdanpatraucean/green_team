@@ -7,7 +7,7 @@
     </div>
 
     <!--reset form-->
-    <div class="reset-form">
+    <div [ngClass]="!isUserResetting ? 'reset-form reset-form-no-reset' : 'reset-form reset-form-reset'">
         <form>
         <p id="generic-error" [ngClass]="isEmailSentMessage ? 'generic-err generic-err-reset' : 'generic-err generic-err-no-reset'" *ngIf='errorMessage.isGenericError' [innerHTML]="errorMessage.generic_msg"></p>
         <div [hidden]="isUserResetting" class="form-group input-textbox-group">
@@ -17,12 +17,14 @@
         </div>
         <div [hidden]="!isUserResetting"  class="form-group input-textbox-group">
           <label for="InputPassword"></label>
-          <input [(ngModel)]="resetPassword.userNewPassword" name="pass" type="password" class="form-control input-textbox" id="InputPassword" placeholder="new password">
+          <input [(ngModel)]="resetPassword.userNewPassword" name="pass" type="{{resetPassword.passType1}}" class="form-control input-textbox" id="InputPassword" placeholder="new password">
+          <button id="show-pass-1" class="btn btn-show-pass" (click)="showHidePassword1()"><i class="fa fa-eye"></i></button>
           <p  class="err text-danger" *ngIf='errorMessage.isNewPassEmpty || !errorMessage.isNewPassValid' [innerHTML]="errorMessage.pass_msg"></p>
         </div>
         <div [hidden]="!isUserResetting"  class="form-group input-textbox-group">
             <label for="InputPasswordConfirm"></label>
-            <input [(ngModel)]="resetPassword.userConfirmPassword" name="confirm-pass" type="password" class="form-control input-textbox" id="InputPasswordConfirm" placeholder="confirm password">
+            <input [(ngModel)]="resetPassword.userConfirmPassword" name="confirm-pass" type="{{resetPassword.passType2}}" class="form-control input-textbox" id="InputPasswordConfirm" placeholder="confirm password">
+            <button id="show-pass-2" class="btn btn-show-pass" (click)="showHidePassword2()"><i class="fa fa-eye"></i></button>
             <p  class="err text-danger" *ngIf='errorMessage.isConfirmPassEmpty || !errorMessage.isConfirmPassValid' [innerHTML]="errorMessage.confirm_pass_msg"></p>
           </div>
         <button (click)="isUserResetting ? onResetPassword() : onRequestResetPassword()" type="submit" class="btn btn-primary reset-btn">RESET PASSWORD</button>

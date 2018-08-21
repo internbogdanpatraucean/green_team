@@ -4,6 +4,88 @@
   can view the started courses and the progress that was made on a specific
   course. Any started course can be closed on this page.
 -->
-<p>
- Bulubenchi Iosif!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 all-sections">
+
+      <!--my account-->
+      <section class="my-account each-section">
+        <h3 class="my-account-text each-section">My Account</h3>
+        <p class="here-you-can-edit each-section">Here you can edit your account’s information, courses you started and the progress for each one. Contact us at contact@alexateachme.com,
+          if you need any help. </p>
+        <button class="btn btn-primary log-out-btn">LOG OUT</button>
+      </section>
+
+      <!--account info-->
+      <section class="my-account each-section">
+        <h3 class="account-info-text each-section">Account Information</h3>
+
+        <!--picture-->
+        <section class="picture-account each-section">
+          <img class="profile-pic" src="{{userAccount.profilePic}}" alt=" Profile Picture">
+          <p class="profile-pic-info">To quickly change your profile picture, just drag&drop an image or upload a file. Image selected, should have maximum
+            15 MB size.</p>
+          <input [(ngModel)]="tempProfilePic" name="pic" type="text" class="input-textbox account-info upload-pic" *ngIf="uploadPicture"
+            placeholder="picture URL">
+          <button class="btn btn-primary standard-btn" (click)="!uploadPicture ? uploadPic() : confirmUpload()" [innerHTML]="uploadPictureState"></button>
+        </section>
+
+        <!--details-->
+        <section class="details-account each-section">
+          <div class="all-inputs">
+            <input [(ngModel)]="tempUserName" type="text" name="name" class="input-textbox account-info">
+            <p class="err" *ngIf='errorMessage.isNameEmpty || !errorMessage.isNameValid || !errorMessage.isEntireName' [innerHTML]="errorMessage.name_msg"></p>
+          </div>
+          <div class="all-inputs">
+            <input [(ngModel)]="tempUserPass" type="password" name="pass" class="input-textbox account-info">
+            <p class="err" *ngIf='errorMessage.isPassEmpty || !errorMessage.isPassValid' [innerHTML]="errorMessage.pass_msg"></p>
+          </div>
+          <div class="all-inputs">
+            <input [(ngModel)]="tempUserEmail" type="text" name="email" class="input-textbox account-info">
+            <p class="err" *ngIf='errorMessage.isEmailEmpty || !errorMessage.isEmailValid' [innerHTML]="errorMessage.email_msg"></p>
+          </div>
+          <p class="succes" [hidden]="!isDataValid">All data was saved</p>
+          <button (click)="saveNewUserData()" class="btn btn-primary standard-btn save-btn edit-btn">Save</button>
+          <button (click)="cancelEditUserData()" class="btn btn-primary standard-btn cancel-btn edit-btn">Cancel</button>
+        </section>
+      </section>
+
+      <!--started-courses-->
+      <section id="started-courses" class="my-account each-section">
+        <h3 class="started-courses-text each-section">Started Courses</h3>
+        <div class="started-course row" *ngFor="let started_course of started_courses">
+
+          <!--close started course-->
+          <button type="button" (click)="closeCourse(started_course)" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <!--started courses image-->
+          <div class="col-xs-2">
+            <img src={{started_course.courseImage}} class="started-course-image" height="102" width="102">
+          </div>
+
+          <!--started courses info-->
+          <div class="col-xs-8">
+            <p class="started-course-title">{{started_course.courseTitle}}</p>
+            <p class="started-course-description">{{started_course.courseDescription}}</p>
+          </div>
+
+          <!--started course points-->
+          <div class="col-xs-2">
+            <p class="started-course-points">{{started_course.coursePoints}}
+              <br> points</p>
+          </div>
+
+          <!--progress bar-->
+          <div class="col-xs-12 ">
+            <div class="progress course-progress">
+              <div class="progress-bar course-progress-bar" role="progressbar" style="height: 2px;" aria-valuenow="0" aria-valuemin="0"
+                aria-valuemax="100" [style.width]="(started_course.courseProgress/100)*100 + '%'"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
