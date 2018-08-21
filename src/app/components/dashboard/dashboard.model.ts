@@ -1,4 +1,4 @@
-export class Course{
+export class Category{
      public name:string;
      public adresa:string;
      public color:string;

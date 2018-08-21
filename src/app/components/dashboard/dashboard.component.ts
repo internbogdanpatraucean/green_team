@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { splitClasses, MapType } from '@angular/compiler';
-import { Course } from './dashboard.model';
+import { Category } from './dashboard.model';
 import { splitAtColon } from '@angular/compiler/src/util';
 
 @Component({
@@ -23,27 +23,27 @@ export class DashboardComponent implements OnInit {
     return Math.floor((Math.random() * max) + min);
   }
 
-  course: Course[] = [
-    new Course('Energy', '#', this.getRandomColor()),
-    new Course('Astrology', '#', this.getRandomColor()),
-    new Course('Jokes', '#', this.getRandomColor()),
-    new Course('Economy', '#', this.getRandomColor()),
-    new Course('Life Hacks', '#', this.getRandomColor()),
-    new Course('Astronomy', '#', this.getRandomColor()),
-    new Course('Matematics', '#', this.getRandomColor()),
-    new Course('Grammar', '#', this.getRandomColor()),
-    new Course('Literature', '#', this.getRandomColor()),
-    new Course('Finance', '#', this.getRandomColor()),
-    new Course('Robotics', '#', this.getRandomColor()),
-    new Course('Fun Facts', '#', this.getRandomColor()),
-    new Course('Android', '#', this.getRandomColor()),
-    new Course('Fronth End', '#', this.getRandomColor()),
-    new Course('Back End', '#', this.getRandomColor()),
-    new Course('Testing', '#', this.getRandomColor()),
-    new Course('C#', '#', this.getRandomColor()),
-    new Course('Java', '#', this.getRandomColor())
+  category: Category[] = [
+    new Category('Energy', '#', this.getRandomColor()),
+    new Category('Astrology', '#', this.getRandomColor()),
+    new Category('Jokes', '#', this.getRandomColor()),
+    new Category('Economy', '#', this.getRandomColor()),
+    new Category('Life Hacks', '#', this.getRandomColor()),
+    new Category('Astronomy', '#', this.getRandomColor()),
+    new Category('Matematics', '#', this.getRandomColor()),
+    new Category('Grammar', '#', this.getRandomColor()),
+    new Category('Literature', '#', this.getRandomColor()),
+    new Category('Finance', '#', this.getRandomColor()),
+    new Category('Robotics', '#', this.getRandomColor()),
+    new Category('Fun Facts', '#', this.getRandomColor()),
+    new Category('Android', '#', this.getRandomColor()),
+    new Category('Fronth End', '#', this.getRandomColor()),
+    new Category('Back End', '#', this.getRandomColor()),
+    new Category('Testing', '#', this.getRandomColor()),
+    new Category('C#', '#', this.getRandomColor()),
+    new Category('Java', '#', this.getRandomColor())
   ];
-  newCourses:Course[] = this.course.slice(0, 6);
+  newCategories:Category[] = this.category.slice(0, 6);
 
   searchName = '';
   index = 6;
@@ -54,13 +54,13 @@ export class DashboardComponent implements OnInit {
   }
 
   onClickSearch() {
-    this.newCourses = [];
-    for (var i = 0; i < this.course.length; i++) {
-      if (this.searchName != "" && this.course[i].name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
-        this.newCourses.push(this.course[i]);
+    this.newCategories = [];
+    for (var i = 0; i < this.category.length; i++) {
+      if (this.searchName != "" && this.category[i].name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
+        this.newCategories.push(this.category[i]);
         console.log("Exista");
       }
-      else if (this.searchName != this.course[i].name)
+      else if (this.searchName != this.category[i].name)
         console.log("Nume incorect.Rescrie!");
     }
   }
@@ -68,10 +68,10 @@ export class DashboardComponent implements OnInit {
 
   onClickDiscover() {
 
-    this.newCourses = this.course.slice(this.index, this.index + 6);
+    this.newCategories = this.category.slice(this.index, this.index + 6);
     this.index += 6;
     this.searchName = "";
-    if (this.index >= this.course.length) {
+    if (this.index >= this.category.length) {
       this.index = 0;
 
 

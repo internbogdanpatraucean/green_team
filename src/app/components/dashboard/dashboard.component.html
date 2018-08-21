@@ -20,9 +20,9 @@
     </div>
   
     <div class="container ">
-      <a id="course1" [href]="course.adresa">
-        <div class="col-xs-4 flex-container" [ngStyle]="{background:course.color}" *ngFor="let course of newCourses ">
-          <p>{{course.name}}</p>
+      <a id="course1" [href]="category.adresa">
+        <div class="col-xs-4 flex-container" [ngStyle]="{background:category.color}" *ngFor="let category of newCategories ">
+          <p>{{category.name}}</p>
         </div>
       </a>
     </div>
