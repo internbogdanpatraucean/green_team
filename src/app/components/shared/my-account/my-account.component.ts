@@ -43,7 +43,7 @@ export class MyAccountComponent implements OnInit {
     new StartedCourse('../../../../assets/course_img1.jpg', 'Title 1: How to do a joke', 'Here you can try to learn', 10, 59, 1),
     new StartedCourse('../../../../assets/course_img3.jpg', 'Title 2: How to take care of dogs', 'Here you can try to learn', 100, 32, 2),
     new StartedCourse('../../../../assets/course_img4.jpg', 'Title 3: How to do learn Angular', 'Here you can try to learn', 50, 158, 3),
-    new StartedCourse('../../../../assets/course_img5.jpg', 'Title 4: Nothing to learn here', 'Here you can try to learn', 83, 0, 4)
+    new StartedCourse('../../../../assets/course_img5.jpg', 'Title 4: Nothing to learn here', 'Here you can try to learn', 0, 0, 4)
   ];
 
   color = 'primary';
