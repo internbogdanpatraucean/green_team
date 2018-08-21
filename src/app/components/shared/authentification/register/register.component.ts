@@ -7,6 +7,7 @@ import { ValidationService } from '../../../../services/validation/validation.se
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   public isTermsChecked = false;
 
   public newUser = {
@@ -72,10 +73,7 @@ export class RegisterComponent implements OnInit {
     return verifier.test(input);
   }
 
-  isPasswordValid(input: string): boolean {
-     const verifier = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/);
-     return verifier.test(input);
-    }
+
 
   validateData() {
     if (this.checkFirstNameEmpty()) {
@@ -129,7 +127,7 @@ export class RegisterComponent implements OnInit {
       this.errorMessage.isEmailValid = true;
     }
 
-    if (!this.isPasswordValid(this.newUser.password) && !this.errorMessage.isPasswordEmpty) {
+    if (!this.validation.isPasswordValid(this.newUser.password) && !this.errorMessage.isPasswordEmpty) {
       this.errorMessage.password_msg = 'weak password';
       this.errorMessage.isPasswordValid = false;
      } else {
