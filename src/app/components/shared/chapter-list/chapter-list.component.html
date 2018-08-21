@@ -1,20 +1,28 @@
 <form action="" class="primary-form">
-
-    <div class="chapter-image">
-        <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
-        <p class="paragraf-pick">Pick the one you like and start learning</p>
+    <div class="chapter-image" *ngFor="let info of infos">
+        <label class="categoryName-label" for="">
+            <p class="categoryName-paragraf"> {{info.categoryName}} </p>
+        </label>
+        <p class="courseTitle-paragraf">{{info.courseName}}</p>
+        <p class="courseDesc-paragraf">{{info.courseDesc}}</p>
     </div>
     <div id="" class="container">
         <div class="row ">
-            <div>
-                <!-- <div *ngFor="let chapter of chapters"> -->
-                <div class=" chapter-div">
-                    <label class="nrCapitol-label" for="">Nr Capitol</label>
-                    <label class="numeCapitol-label" for="">Nume Capitol</label>
-                    <label class="descCapitol-label" for="">Descriere Capitol</label>
+            <!-- <div> -->
+            <!-- <div > -->
+            <div class=" chapter-div" *ngFor="let chapter of newChapters">
+                <div class="aranjare">
+                    <label class="nrCapitol-label" for="">Chapter {{chapter.capitol}}</label>
+                    <label class="numeCapitol-label" for="">{{chapter.name}}</label>
+                    <label class="descCapitol-label" for="">{{chapter.descriere}}</label>
+                </div>
+                <div class="btn-aranjare">
                     <button class=" startButton">Start</button>
                 </div>
             </div>
+            <!-- </div>/ -->
         </div>
+        <button class="curiculum-button" (click)="onCuriculumButton()"> See the full curiculum</button>
+
     </div>
 </form>
