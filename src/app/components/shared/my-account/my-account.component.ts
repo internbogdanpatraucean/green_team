@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
+import { StartedCourse } from './my-account-courses.model';
 
 @Component({
   selector: 'app-my-account',
@@ -8,13 +9,14 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
 })
 export class MyAccountComponent implements OnInit {
 
-
   tempUserName = '';
   tempUserEmail = '';
   tempUserPass = '';
+  tempProfilePic = '';
 
   isDataValid = false;
   uploadPicture = false;
+  uploadPictureState = 'Chose file';
 
   userAccount = {
     profilePic : '../../../../assets/profile_pic.png',
@@ -22,12 +24,12 @@ export class MyAccountComponent implements OnInit {
     userLastName: 'Morcov',
     userPassword: '1233@Avsase',
     userEmail: 'bogyp@yahoo.com',
-    coursePoints: 0
   };
 
   errorMessage = {
     isNameEmpty: false,
     isNameValid: true,
+    isEntireName: true,
     isPassEmpty: false,
     isPassValid: true,
     isEmailEmpty: false,
@@ -36,6 +38,18 @@ export class MyAccountComponent implements OnInit {
     pass_msg: '',
     email_msg: ''
   };
+
+  started_courses: StartedCourse[] = [
+    new StartedCourse('../../../../assets/course_img1.jpg', 'Title 1: How to do a joke', 'Here you can try to learn', 10, 59, 1),
+    new StartedCourse('../../../../assets/course_img3.jpg', 'Title 2: How to take care of dogs', 'Here you can try to learn', 100, 32, 2),
+    new StartedCourse('../../../../assets/course_img4.jpg', 'Title 3: How to do learn Angular', 'Here you can try to learn', 50, 158, 3),
+    new StartedCourse('../../../../assets/course_img5.jpg', 'Title 4: Nothing to learn here', 'Here you can try to learn', 83, 0, 4)
+  ];
+
+  color = 'primary';
+  mode = 'determinate';
+  value = 50;
+  bufferValue = 75;
 
   constructor(private validation: ValidationService) {
     this.initUserData();
@@ -79,13 +93,13 @@ export class MyAccountComponent implements OnInit {
 
     const name = this.tempUserName.split(' ', 3);
 
-    console.log(name.length);
-    if (name.length < 2) {
-      this.errorMessage.isNameValid = false;
+    if (name.length < 2 && !this.errorMessage.isNameEmpty) {
+      this.errorMessage.isEntireName = false;
       this.errorMessage.name_msg = 'first name and last name are needed';
       ok = false;
     } else {
-      this.errorMessage.isNameValid = true;
+      this.errorMessage.isEntireName = true;
+      console.log(name.length);
     }
 
     if (this.validation.checkEmpty(this.tempUserPass)) {
@@ -113,7 +127,7 @@ export class MyAccountComponent implements OnInit {
     }
 
     if (!this.validation.isEmailValid(this.tempUserEmail) && !this.errorMessage.isEmailEmpty) {
-      this.errorMessage.email_msg = 'required field';
+      this.errorMessage.email_msg = 'invalid email';
       this.errorMessage.isEmailValid = false;
       ok = false;
     } else {
@@ -140,13 +154,25 @@ export class MyAccountComponent implements OnInit {
   }
 
   uploadPic() {
-    this.uploadPicture = true;
+    if (this.uploadPicture === false) {
+      this.uploadPicture = true;
+      this.uploadPictureState = 'Upload file';
+    } else {
+      this.uploadPicture = false;
+      this.uploadPictureState = 'Chose file';
+    }
   }
 
   confirmUpload() {
-    const pictureURL = prompt('Please enter picture URL(imgur):');
-    if (pictureURL !== '') {
-      this.userAccount.profilePic = pictureURL;
+    if (this.tempProfilePic !== '') {
+      this.uploadPicture = false;
+      this.userAccount.profilePic = this.tempProfilePic;
     }
+  }
+
+  closeCourse(course: StartedCourse) {
+   this.started_courses.splice(this.started_courses.indexOf(course), 1);
+
+   // delete it also from the database
   }
 }

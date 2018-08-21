@@ -158,6 +158,71 @@
 
 .upload-pic {
   float: right;
-  margin-right: 140px;
+  margin-right: 105px;
   margin-top: -25px;
+  width: 50%;
+}
+
+.started-course {
+    height: 8.93%;
+    width: 71.5%;
+    border: 1px solid #EFF1F4;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 30px 40px 10px 40px;
+    margin-bottom: 30px;
+}
+
+
+
+.started-course-image {
+    border-radius: 5px;
+    object-fit: cover;
+    /* float: left; */
+}
+
+.started-course-title {
+    height: 0.82%;
+    width: 100%;
+    color: #06102B;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.started-course-description {
+    height: 1.64%;
+    width: 29.93%;
+    color: #AEB5BB;
+    font-family: Roboto;
+    font-size: 10px;
+    line-height: 16px;
+    margin-left: 30px;
+}
+
+.started-course-points {
+    height: 3.69%;
+    width: 5.54%;
+    color: #006FFF;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    display: flex;
+    padding-top: 20px;
+}
+
+.course-progress {
+  margin-top: 30px;
+}
+
+.course-progress-bar {
+  background: linear-gradient(to right, red , yellow);
+}
+
+#started-courses > div:hover {
+    box-shadow: 1px 1px 2px white, 0 0 25px #52B3D9, 0 0 5px #81CFE0;
 }

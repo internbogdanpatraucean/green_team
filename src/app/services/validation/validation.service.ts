@@ -22,7 +22,7 @@ export class ValidationService {
   }
 
   isLetter(input: string): boolean {
-    const verifier =  new RegExp(/^^[a-zA-Z ]+$/, 'i');
+    const verifier =  new RegExp(/^[a-zA-Z ]+$/, 'i');
     return verifier.test(input);
   }
 }
