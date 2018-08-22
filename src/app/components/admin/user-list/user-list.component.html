@@ -25,37 +25,94 @@
     </section>
 
     <!--user list-->
-    <section class="row user-list">
+    <section class="row user-list" *ngFor="let user of userList">
 
       <!--checkbox-->
       <div class="col-xs-1">
-          <input type="checkbox" class="user-checkbox">
+        <div id="checkActive">
+          <label>
+            <input type="checkbox" readonly>
+          </label>
+        </div>
       </div>
 
       <!--basic info-->
       <div class="col-xs-3">
 
+        <!--Profile picture-->
+        <div>
+          <div class="user-pic col-xs-2">
+            <img src="{{user.userPicture}}" width="50" height="50">
+          </div>
+
+          <!--Username and email-->
+          <div class="col-xs-10">
+            <p class="username">{{user.userName}}</p>
+            <p class="user-email">{{user.userEmail}}</p>
+          </div>
+        </div>
       </div>
 
       <!--total score-->
       <div class="col-xs-3">
-
+        <div class="user-score-position">
+          <p class="user-score">{{user.userScore}}</p>
+        </div>
       </div>
 
       <!--role-->
       <div class="col-xs-2">
-
+        <div class="user-role">
+          <p class="user-role-text">{{user.userRole}}</p>
+        </div>
       </div>
 
       <!--date created-->
       <div class="col-xs-2">
-
+        <div class="user-date">
+          <p class="user-date-text">{{user.userDate}}</p>
+        </div>
       </div>
 
       <!--context menu-->
       <div class="col-xs-1">
+        <p id="dots" class="dots-menu" (click)="onContextMenuClick(user)"><i class="fas fa-ellipsis-h"></i></p>
+
+        <div id="menu" class="context-menu" *ngIf="user.showMenu" (mouseleave)="onMouseLeave(user)">
+          <!--edit-->
+          <p class="menu-option" (click)="showEditModal()"><i class="far fa-edit"></i> Edit</p>
+          <!--delete-->
+          <p class="menu-option" (click)="deleteUser(user)"><i class="fas fa-trash-alt"></i> Delete</p>
+          <!--change role-->
+          <p class="menu-option" (click)="changeUserRole(user)"><i class="fas fa-key"></i> {{user.userChangeRole}}</p>
+        </div>
+      </div>
+
+      <!--edit user-->
+
+
+    </section>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
 
       </div>
-    </section>
+    </div>
   </div>
 </div>
