@@ -1,0 +1,80 @@
+.primary-form{
+    position: relative;
+    background-color: #F6FAFC;
+    height: 100%;
+}
+.course-image{
+    /* max-width: 800px; */
+    height: 370px;
+    width: 100%;
+    background-image: url(/../../assets/bg_image_authentification.png);
+    background-color: hsl(224, 32%, 12%);
+    background-position: center;
+    position: relative;
+text-align: center;
+}
+.paragraf-browse{
+    margin-top: 140px;
+color:white;
+font-size: 26px;
+display: inline-block;
+  vertical-align: middle;
+}
+.paragraf-pick{
+    text-align: center;
+    font-size: 26px;
+    color:white;
+}
+.chapter-div{
+    height:700px ;
+    background-color: #F6FAFC;
+}
+.chapter-paragraf{
+    padding: 2px;
+    margin-top: 450px;
+    width: 70%;
+    margin-left: 15%;
+    color: #AEB5BB;	
+    font-family: Roboto;	
+    font-size: 14px;	
+    line-height: 23px;
+}
+.chapter-paragraf2{
+    padding: 2px;
+    margin-top: 30px;
+    width: 70%;
+    margin-left: 15%;
+    color: #06102B;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    font-weight: bold;	
+    line-height: 21px;
+}
+.prev-button{
+    margin-top: 6%;
+    /* margin-bottom:3%; */
+    margin-left: 71.5%;
+    height: 29px;	
+    /* width: 140px;	 */
+    border: 1px solid #006FFF;	
+    border-radius: 5px;
+    color: #006FFF;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;	
+    text-align: center;
+}
+.next-button{
+    margin-top: 3%;
+    /* margin-bottom:3%; */
+    margin-left: 1%;
+    height: 29px;	
+    /* width: 140px;	 */
+    border: 1px solid #006FFF;	
+    border-radius: 5px;
+    color: #006FFF;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;	
+    text-align: center;
+}

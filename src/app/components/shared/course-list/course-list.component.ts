@@ -10,26 +10,9 @@ import { splitAtColon } from '@angular/compiler/src/util';
 })
 
 export class CourseListComponent implements OnInit {
-
+ courseName='';
   course: Course[] = [
-    new Course('Energy', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Astrology', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Jokes', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Economy', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Life Hacks', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Astronomy', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Matematics', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Grammar', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Literature', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Finance', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Robotics', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Fun Facts', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('Android', '#', '/../../assets/money.jpeg', 'blue'),
-    new Course('Fronth End', '#', '/../../assets/money.jpeg', 'pink'),
-    new Course('Back End', '#', '/../../assets/money.jpeg', 'black'),
-    new Course('Testing', '#', '/../../assets/money.jpeg', 'yellow'),
-    new Course('C#', '#', '/../../assets/money.jpeg', 'green'),
-    new Course('Java', '#', '/../../assets/money.jpeg', 'red')
+
   ];
 
   newCourse: Course[] = this.course.slice(0, 6);
@@ -37,23 +20,49 @@ export class CourseListComponent implements OnInit {
   index = 6;
   ngOnInit() {
   }
+  onCreateButton(event: Event) {
+    if (this.courseName == '') {
+      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to add...";
+    } else{
+        this.course.push(new Course(this.courseName.toUpperCase(), '#', '/../../assets/money.jpeg', 'red'));
+    }
+    this.newCourse = this.course.slice(0, 6);
 
-  // onClickSearch() {
+    
 
-  //   this.newChapter = [];
-  //   for (var i = 0; i < this.chapter.length; i++) {
-  //     if (this.searchName != "" && this.chapter[i].name.toLowerCase().indexOf(this.searchName.toLowerCase()) != -1) {
-  //       this.newChapter.push(this.chapter[i]);
-  //       console.log("Exista");
-  //     }
-  //     else if (this.searchName != this.chapter[i].name)
-  //       console.log("Nume incorect.Rescrie!");
-  //   }
-  // }
+    console.log(this.course);
+  }
 
+  onEditButton() {
+    if (this.courseName == '') {
+      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to edit...";
+    } else {
+      for (var i = 0; i < this.course.length; i++) {
+        if (this.course[i].name.toLowerCase().indexOf(this.courseName.toLowerCase()) > -1) {
+          (<HTMLInputElement>document.getElementById("courseName")).innerText = "";
+          console.log("eeeee");
+          
+        }
+      }
+    }
+  }
+  onDeleteButton() {
+    if (this.courseName == '') {
+      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to delete...";
+    } else {
+      for (var i = 0; i < this.course.length; i++) {
+        //compara numele introdus cu numele tuturor obiectelor
+        if (this.course[i].name.toLowerCase().indexOf(this.courseName.toLowerCase()) > -1) {
+          var elem = this.course.splice(i, 1);
+          this.newCourse = this.course.slice(0, 6);
+          console.log(elem);
+
+        }
+      }
+    }
+  }
+  
   onClickDiscover() {
-    // console.log(this.chapter.descriere);
-
     this.newCourse = this.course.slice(this.index, this.index + 6);
     this.index += 6;
     this.searchName = "";
