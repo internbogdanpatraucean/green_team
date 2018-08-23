@@ -5,42 +5,40 @@
   the last chapter, the link should go to a screen that displays a finalization
   message - this message can be part of this same component.
 -->
-<form action=""  class="primary-form">
-    
+<form action="" class="primary-form">
+
   <div class="chapter-image">
-    <p class="paragraf-browse">Chapter {{info.capitol}}</p>
-    <p class="paragraf-pick">{{info.titlu}}</p>
+    <p class="paragraf-browse">Chapter </p>
+    <p class="paragraf-pick">dddd</p>
   </div>
 
-  <div id="quiz" class="container">
+  <div class="container">
+    <div class="row buttons-div">
+      <input id="categoryName" type="text" class="name-text" [(ngModel)]="categoryName" name="name" placeholder="Give me a category name...">
+      <button class="create-button" (click)="onCreateButton($event)">Create</button>
+      <button class="edit-button" (click)="onEditButton()">Edit</button>
+      <button class="delete-button" (click)="onDeleteButton()">Delete</button>
+    </div>
     <div class="row quiz">
       <div *ngFor="let question of questions,let index=index">
-
         <div class="question ">
           <h3>
-            <!-- <span class="label label-warning " id="qid ">Q:</span> -->
             <span id="question ">Q: {{question.question}}</span>
           </h3>
         </div>
-
         <div class="row one" *ngFor="let answer of question.answers">
-          
           <div class="row radio answer-div">
             <label class="answer-label">
-              <input class="answer" type="radio" name={{index}} value={{answer.id}} [(ngModel)]="question.selectedAnswer">{{answer.text}}</label> 
+              <input class="answer" type="radio" name={{index}} value={{answer.id}} [(ngModel)]="question.selectedAnswer">{{answer.text}}</label>
           </div>
         </div>
-
       </div>
-    </div>
-    <div class="text-muted ">
-      <span id="answer "></span>
     </div>
     <button class="submitButton" (click)="onSubmitClick()">Submit</button>
     <button id="prevButton" class="prevButton" (click)="onPrevButton()">Previous Chapter</button>
-    
+
     <button id="nextButton" class="nextButton" (click)="onNextButton()">Next Chapter</button>
-  
+
   </div>
 </form>
 <!-- </div> -->

@@ -6,11 +6,15 @@
         <p class="courseTitle-paragraf">{{info.courseName}}</p>
         <p class="courseDesc-paragraf">{{info.courseDesc}}</p>
     </div>
-    <div id="" class="container">
-        <div class="row ">
-            <!-- <div> -->
-            <!-- <div > -->
-            <div class=" chapter-div" *ngFor="let chapter of newChapters">
+    <div class="container ">
+        <div class="row buttons-div">
+            <input id="chapterName" type="text" class="name-text" [(ngModel)]="chapterName" name="name" placeholder="Give me a category name...">
+            <button class="create-button" (click)="onCreateButton($event)">Create</button>
+            <button class="edit-button" (click)="onEditButton()">Edit</button>
+            <button class="delete-button" (click)="onDeleteButton()">Delete</button>
+        </div>
+        <div class="row chapter-div">
+            <div class=" " *ngFor="let chapter of newChapters">
                 <div class="aranjare">
                     <label class="nrCapitol-label" for="">Chapter {{chapter.capitol}}</label>
                     <label class="numeCapitol-label" for="">{{chapter.name}}</label>
@@ -20,9 +24,7 @@
                     <button class=" startButton">Start</button>
                 </div>
             </div>
-            <!-- </div>/ -->
         </div>
         <button class="curiculum-button" (click)="onCuriculumButton()"> See the full curiculum</button>
-
     </div>
 </form>

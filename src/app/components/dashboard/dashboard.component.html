@@ -6,26 +6,36 @@
 -->
 
 <form action="" class="primary-form">
-    <div class="col-xs-12 ">
-      <div class="course-image">
-        <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
-        <p class="paragraf-pick">Pick the one you like and start learning</p>
-        <p id="demo"></p>
-      </div>
+  <div class="col-xs-12 ">
+    <div class="course-image">
+      <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
+      <p class="paragraf-pick">Pick the one you like and start learning</p>
+      <p id="demo"></p>
     </div>
-    
-    <div class="col-xs-4 search-component">
-      <input type="text" class="search-text" [(ngModel)]="searchName" name="searchName" placeholder="Search here...">
-      <button class="search-button" (click)="onClickSearch()">SEARCH</button>
+  </div>
+
+  <div class="col-xs-4 search-component">
+    <label for="" id="search-label" class="search-label"></label>
+    <input type="text" class="search-text" [(ngModel)]="searchName" name="searchName" placeholder="Search here...">
+    <button class="search-button" (click)="onClickSearch()">SEARCH</button>
+  </div>
+
+  <div class="container ">
+    <div class="row buttons-div">
+      <input id="categoryName" type="text" class="name-text" [(ngModel)]="categoryName" name="name" placeholder="Give me a category name...">
+      <!-- <input type="text" class="/-text" [(ngModel)]="searchName" name="searchName" placeholder="Search here..."> -->
+      <button class="create-button" (click)="onCreateButton($event)">Create</button>
+      <button class="edit-button" (click)="onEditButton()">Edit</button>
+      <button class="delete-button" (click)="onDeleteButton()">Delete</button>
     </div>
-  
-    <div class="container ">
+    <div class="row category-div">
       <a id="course1" [href]="category.adresa">
         <div class="col-xs-4 flex-container" [ngStyle]="{background:category.color}" *ngFor="let category of newCategories ">
-          <p>{{category.name}}</p>
+          <p id="categoryName-paragraf" class="categoryName-paragraf">{{category.name}}</p>
         </div>
       </a>
     </div>
-    <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
-  
-  </form>
+  </div>
+  <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
+
+</form>
