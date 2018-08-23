@@ -25,13 +25,13 @@
     </section>
 
     <!--user list-->
-    <section class="row user-list" *ngFor="let user of userList">
+    <section [ngClass]="user.userIsChecked ? 'row user-list user-list-checked' : 'row user-list'" *ngFor="let user of userList">
 
       <!--checkbox-->
       <div class="col-xs-1">
         <div id="checkActive">
           <label>
-            <input type="checkbox" readonly>
+            <input type="checkbox" (click)="checkUser(user)" [checked]="user.userIsChecked">
           </label>
         </div>
       </div>
@@ -76,43 +76,43 @@
 
       <!--context menu-->
       <div class="col-xs-1">
-        <p id="dots" class="dots-menu" (click)="onContextMenuClick(user)"><i class="fas fa-ellipsis-h"></i></p>
+        <p id="dots" class="dots-menu" (click)="user.userIsEditing && onContextMenuClick(user)" ><i class="fas fa-ellipsis-h"></i></p>
 
         <div id="menu" class="context-menu" *ngIf="user.showMenu" (mouseleave)="onMouseLeave(user)">
           <!--edit-->
-          <p class="menu-option" (click)="showEditModal()"><i class="far fa-edit"></i> Edit</p>
+          <p class="menu-option" (click)="showEdit(user)"><i class="far fa-edit"></i> Edit</p>
           <!--delete-->
-          <p class="menu-option" (click)="deleteUser(user)"><i class="fas fa-trash-alt"></i> Delete</p>
+          <p class="menu-option" (click)="deleteUser(user)"><i class="fas fa-trash-alt"></i>  Delete</p>
           <!--change role-->
-          <p class="menu-option" (click)="changeUserRole(user)"><i class="fas fa-key"></i> {{user.userChangeRole}}</p>
+          <p class="menu-option" (click)="changeUserRole(user)"><i class="fas fa-key"></i>  {{user.userChangeRole}}</p>
         </div>
       </div>
 
       <!--edit user-->
+      <div class="col-xs-12 user-list-edit" *ngIf="user.showEdit">
 
-
-    </section>
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
-          </div>
-          <div class="modal-body">
-            <p>Some text in the modal.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+        <!--username input-->
+        <div class="col-xs-3">
+          <input [(ngModel)]="TempUser.Username" type="text" name="name" class="input-textbox user-list-inputs" placeholder="username">
+          <p *ngIf="ErrorMessages.isNameEmpty || !ErrorMessages.isNameValid || !ErrorMessages.isEntireName" class="err err-name">{{ErrorMessages.name_msg}}</p>
         </div>
 
+        <!--email input-->
+        <div class="col-xs-3">
+          <input [(ngModel)]="TempUser.Email" type="text" name="email" class="input-textbox user-list-inputs user-email-input" placeholder="email">
+          <p *ngIf="ErrorMessages.isEmailEmpty || !ErrorMessages.isEmailValid" class="err err-email">{{ErrorMessages.email_msg}}</p>
+        </div>
+
+        <!--confirm edit-->
+        <div class="col-xs-3">
+          <button [ngClass]="isDataSaved ? 'btn btn-primary standard-btn btn-save btn-save-saved':'btn btn-primary standard-btn btn-save'" (click)="saveUserEdit(user)">Save</button>
+        </div>
+
+        <!--exit edit-->
+        <div class="col-xs-3">
+          <button class="btn btn-primary standard-btn btn-cancel" (click)="closeEdit(user)">Close</button>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>

@@ -19,7 +19,7 @@ import { AuthentificationComponent } from './components/shared/authentification/
 import { LoginComponent } from './components/shared/authentification/login/login.component';
 import { RegisterComponent } from './components/shared/authentification/register/register.component';
 import { ResetComponent } from './components/shared/authentification/reset/reset.component';
-
+import { HttpClientModule } from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -62,12 +62,14 @@ const routes: Routes = [
     AuthentificationComponent,
     LoginComponent,
     RegisterComponent,
-    ResetComponent,
+    ResetComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     [RouterModule.forRoot(routes)]
   ],
   providers: [],

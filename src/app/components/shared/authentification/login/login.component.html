@@ -26,7 +26,7 @@
           <button class="btn btn-show-pass" (click)="showHidePassword()"><i class="fa fa-eye"></i></button>
           <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPassEmpty || !errorMessage.isPassValid'[innerHTML]="errorMessage.msgPass"></p>
         </div>
-        <button type="submit" class="btn btn-primary sign-btn" (click)="checkData()">SIGN IN</button>
+        <button type="submit" class="btn btn-primary sign-btn" (click)="onLogin()">SIGN IN</button>
         <div class="forgot-password">
           <p>Forgot password?
             <u>

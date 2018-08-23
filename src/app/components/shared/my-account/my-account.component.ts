@@ -91,15 +91,13 @@ export class MyAccountComponent implements OnInit {
       this.errorMessage.isNameValid = true;
     }
 
-    const name = this.tempUserName.split(' ', 3);
 
-    if (name.length < 2 && !this.errorMessage.isNameEmpty) {
+    if (this.validation.isEntireName(this.tempUserName) && !this.errorMessage.isNameEmpty) {
       this.errorMessage.isEntireName = false;
       this.errorMessage.name_msg = 'first name and last name are needed';
       ok = false;
     } else {
       this.errorMessage.isEntireName = true;
-      console.log(name.length);
     }
 
     if (this.validation.checkEmpty(this.tempUserPass)) {

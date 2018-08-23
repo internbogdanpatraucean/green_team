@@ -7,12 +7,17 @@
 .user-list {
   margin-right: 120px;
   margin-left: 120px;
+  margin-bottom: 10px;
   height: 10%;
   width: 75%;
   border: 1px solid #eff1f4;
   border-radius: 5px;
   background-color: #ffffff;
   padding: 5px 15px 5px 15px;
+}
+
+.user-list-checked {
+  border: 1px solid #006fff;
 }
 
 .users-list-headers {
@@ -198,3 +203,72 @@ img {
   color: #C5EFF7;
   cursor: default;
 }
+
+.user-list-edit {
+  margin-left: 60px;
+  padding: 20px 0px 10px 10px;
+}
+
+.user-list-inputs {
+  height: 25px;
+  width: 80%;
+  border: 1px solid #aeb5bb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 10px 10px 10px 10px;
+  margin-left: -12px;
+  color: #aeb5bb;
+  font-family: Roboto;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+.user-email-input {
+  margin-left: -40px;
+}
+
+.standard-btn {
+  height: 0.5%;
+  width: 35%;
+  border: 1px solid #006fff;
+  border-radius: 5px;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 11px;
+  text-align: center;
+  white-space: normal;
+}
+
+.btn-save {
+  background-color: white;
+  color: #006fff;
+  margin-left: -52px;
+}
+
+.btn-save-saved {
+  border: 1px solid #00E640;
+  color: #00E640;
+}
+
+.btn-cancel {
+  background-color: #006fff;
+  color: white;
+  margin-left: -150px;
+}
+
+.err{
+  margin-top: 5px;
+  margin-bottom: -5px;
+  font-size: 12px;
+  font-family: Roboto;
+  color: #E74C3C;
+}
+
+.err-name {
+  margin-left: -10px;
+}
+
+.err-email {
+  margin-left: -39px;
+}
+

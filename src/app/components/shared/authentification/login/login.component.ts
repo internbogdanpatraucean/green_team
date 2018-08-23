@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService} from 'src/app/services/validation/validation.service';
-import { IfStmt } from '@angular/compiler';
+import { LoginServiceService } from '../../../../services/authentificationService/login-service.service';
+
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
     msgGeneric: 'Data not found on the server'
   };
 
-  constructor(private validation: ValidationService) {}
+  constructor(private validation: ValidationService, private loginService: LoginServiceService) {}
 
   ngOnInit() {
   }
@@ -46,11 +47,22 @@ export class LoginComponent implements OnInit {
       }
   }
 
-  checkData() {
+   onLogin() {
+    //  if (!this.checkData()) {
+     this.loginService.login(this.person).subscribe(response => {
+       debugger;
+       console.log(response);
+     });
+    debugger;
+    }
 
+  checkData(): boolean {
+
+    let ok = true;
     if (this.validation.checkEmpty(this.person.email)) {
       this.errorMessage.isEmailEmpty =  true;
       this.errorMessage.msgEmail = 'email required';
+      ok = false;
     } else {
       this.errorMessage.isEmailEmpty =  false;
     }
@@ -58,6 +70,7 @@ export class LoginComponent implements OnInit {
     if (this.validation.checkEmpty(this.person.password)) {
       this.errorMessage.isPassEmpty =  true;
       this.errorMessage.msgPass = 'password required';
+      ok = false;
     } else {
       this.errorMessage.isPassEmpty = false;
     }
@@ -65,6 +78,7 @@ export class LoginComponent implements OnInit {
     if (!this.checkEmailDB() && !this.errorMessage.isEmailEmpty) {
       this.errorMessage.isEmailValid = false;
       this.errorMessage.msgEmail = `email not found |  <a href="/register">Register?</a>`;
+      ok = false;
     } else {
       this.errorMessage.isEmailValid = true;
     }
@@ -72,8 +86,10 @@ export class LoginComponent implements OnInit {
     if (!this.checkPasswordDB() && !this.errorMessage.isPassEmpty) {
       this.errorMessage.isPassValid = false;
       this.errorMessage.msgPass = 'password incorrect';
+      ok = false;
     } else {
       this.errorMessage.isPassValid =  true;
     }
+    return ok;
   }
 }
