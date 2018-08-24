@@ -12,6 +12,50 @@
     position: relative;
 /* text-align: center; */
 }
+.buttons-div{
+   /* border:1px solid blue; */
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 70px;
+}
+.name-text{
+    height: 29px;
+    width: 66%;
+    /* margin-left:1%; */
+    border-radius: 5px;
+}
+.create-button{
+    background-color: #006FFF;
+    color: #FFFFFF;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;
+    height: 29px;
+    width: 10%;
+    margin-left:2%;
+    border-radius: 5px;
+}
+.edit-button{
+    color: #7D8492;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;
+    height: 29px;
+    width: 10%;
+    margin-left:2%;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.delete-button{
+    color: #7D8492;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;
+    height: 29px;
+    width: 10%;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+}
 .categoryName-label{
     margin-top:100px;
     margin-left: 20%;
@@ -37,32 +81,37 @@
     font-size: 20px;
 }
 .chapter-div{
-    margin-top:100px;
+    margin-top:70px;
     margin-left: 15%;
     height: 150px;
-    border: 1px solid #AEB5BB;
     border-radius: 5px;
-    width:70%;
-    padding-left: 5%;
+    width: 70%;
     height: 40%;
   }
-
+  .aranjare{
+      margin-top:70px;
+      width: 90%;
+  }
   .nrCapitol-label{
-      color:blue;
-    margin-left:2%;
+    color:blue;
+    /* margin-left:2%; */
     padding-top: 3px; 
+    padding-left: 2px;
     width: 100%;
     height: 25px;
     
   }
   .numeCapitol-label{
-    margin-left:2%;
+    padding-left: 2px;
+    /* margin-left:2%; */
     padding-top: 7px; 
     width: 100%;
     height: 35px;
   }
   .descCapitol-label{
-    margin-left:2%;
+      border:1 px solid blue;
+    /* margin-left:2%; */
+    padding-left: 2px;
     padding-top: 7px; 
     width: 100%;
     height: 69px;
@@ -71,17 +120,14 @@
     font-size: 14px;	
     line-height: 23px;
   }
-  .aranjare{
-      width: 85%;
-      margin-left:1%;
-  }
   .btn-aranjare{
       margin-top:-85px;
-      margin-left:90%;
+      margin-left:92%;
       width: 10%;
       float: right;
   }
   .startButton{
+      width: 90%;
     color: #006FFF;	
     font-family: Roboto;	
     font-size: 16px;	
@@ -90,7 +136,7 @@
     height: 31px;	
     border: 1px solid #006FFF;	
     border-radius: 5px;
-    margin-left:1%;
+    margin-left:10%;
   }
   .curiculum-button{
       height: 29px;

@@ -20,6 +20,8 @@ import { LoginComponent } from './components/shared/authentification/login/login
 import { RegisterComponent } from './components/shared/authentification/register/register.component';
 import { ResetComponent } from './components/shared/authentification/reset/reset.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChapterComponent } from './components/shared/chapter/chapter.component';
+import { CourseFinishComponent } from './components/shared/course-finish/course-finish.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,9 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'courses', component: CourseListComponent },
-  { path: 'chapters', component: ChapterListComponent },
+  { path: 'course-finish', component: CourseFinishComponent },
+  { path: 'chapters-list', component: ChapterListComponent },
+  { path: 'chapters', component: ChapterComponent },
   { path: 'chapter-questions', component: ChapterQuestionsComponent },
 
   {
@@ -62,8 +66,9 @@ const routes: Routes = [
     AuthentificationComponent,
     LoginComponent,
     RegisterComponent,
-    ResetComponent
-
+    ResetComponent,
+    ChapterComponent,
+    CourseFinishComponent,
   ],
   imports: [
     BrowserModule,

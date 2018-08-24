@@ -1,0 +1,36 @@
+.finish{
+    background-color: #F6FAFC;
+}
+.congrats{
+    margin-top: 400px;
+    margin-left: 48%;
+    height: 23px;	
+    width: 78px;	
+    color: #AEB5BB;	
+    font-family: Roboto;	
+    font-size: 14px;	
+    font-weight: bold;	
+    line-height: 23px;
+}
+.finished{
+    height: 38px;	
+    width: 400px;	
+    margin-left: 39%;
+    color: #06102B;	
+    font-family: Roboto;	
+    font-size: 24px;	
+    font-weight: bold;	
+    line-height: 38px;	
+    text-align: center;
+}
+.course-page-button{
+    margin-left: 46%;
+    height: 29px;
+    border:1px solid #006fff;
+    border-radius: 5px;
+    color:#006FFF;
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+}

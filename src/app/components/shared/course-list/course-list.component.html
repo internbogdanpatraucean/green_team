@@ -7,24 +7,31 @@
 -->
 
 <form action="" class="primary-form">
-  
-    <div class="course-image">
-      <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
-      <p class="paragraf-pick">Pick the one you like and start learning</p>
-    </div>
-  
-  <div class="course-div">
-    <a [href]="course.adresa">
-    <div action="" class="col-xs-6 flex-container"  *ngFor="let course of newCourse">
-      <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + course.imagePath + ')'}">
-      </div>
-      <div class="row Descriere-div">
-        <p> {{course.name}} </p>
-        <p>{{course.descriere}}</p>
-      </div>
-      
-    </div>
-  </a>
-    <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
+
+  <div class="course-image">
+    <p class="paragraf-browse">Browse through best learning courses for Alexa</p>
+    <p class="paragraf-pick">Pick the one you like and start learning</p>
   </div>
+
+  <div class="container">
+    <div class="row buttons-div">
+      <input id="courseName" type="text" class="name-text" [(ngModel)]="courseName" name="name" placeholder="Give me a category name...">
+      <button class="create-button" (click)="onCreateButton($event)">Create</button>
+      <button class="edit-button" (click)="onEditButton()">Edit</button>
+      <button class="delete-button" (click)="onDeleteButton()">Delete</button>
+    </div>
+    <div class="course-div">
+      <a [href]="course.adresa">
+        <div action="" class="col-xs-6 flex-container" *ngFor="let course of newCourse">
+          <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + course.imagePath + ')'}">
+          </div>
+          <div class="row Descriere-div">
+            <p> {{course.name}} </p>
+            <p>{{course.descriere}}</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>
 </form>
