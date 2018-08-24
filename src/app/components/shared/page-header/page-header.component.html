@@ -3,22 +3,31 @@
   should be displayed on all pages, except for the login ones and should conditionally
   display certain links according to the logged in user role (admin / user).
 -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-style">
   <div class="container-fluid">
     <div class="container">
 
       <div class="navbar-header">
-        <a routerLink="/dashboard" class="navbar-brand">ASSIST</a>
+        <a routerLink="/dashboard" class="navbar-brand" title="Dashboard">
+          <img style="max-width:150px; margin-top: -7px;"
+          src="../../../../assets//logo.png"></a>
       </div>
 
       <div class="navbar-default">
         <ul class="nav navbar-nav navbar-right">
-          <li><a routerLink="/account">User</a></li>
+          <!--Profile Picture-->
+          <li> <img class="profile-pic" src="{{User.profilePicture}}" width ="40px" height="40px"></li>
+          <!--Username-->
+          <li><a routerLink="/account" class="menu-option">{{User.username}}</a></li>
+          <!--Score bell-->
+          <li><p class="bell"><i class="far fa-bell"></i></p></li>
+          <!--User Score-->
+          <li><p class="user-score">{{User.score}}</p></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" style="margin-right: 70px">
-          <li><a routerLink="/courses">Courses</a></li>
-          <li><a href="#">What's new</a></li>
-          <li><a href="#">About</a></li>
+          <li><a routerLink="/courses" class="menu-option">Courses</a></li>
+          <li><a href="#" class="menu-option">What's new</a></li>
+          <li><a href="#" class="menu-option">About</a></li>
         </ul>
       </div>
     </div>

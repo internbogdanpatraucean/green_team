@@ -5,6 +5,114 @@
   Every user can be edited, duplicated, removed or his role may be changed.
   There's also a possibility to create a new user.
 -->
-<p>
-  user-list works!
-</p>
+<div class="container">
+  <div class="row">
+
+    <!--user list header-->
+    <section class="row user-list-header">
+      <div class="col-xs-3">
+        <p class="users-list-headers">BASIC INFO</p>
+      </div>
+      <div class="col-xs-3">
+        <p class="users-list-headers">TOTAL SCORE</p>
+      </div>
+      <div class="col-xs-3">
+        <p class="users-list-headers">ROLE</p>
+      </div>
+      <div class="col-xs-3">
+        <p class="users-list-headers">DATE CREATED</p>
+      </div>
+    </section>
+
+    <!--user list-->
+    <section [ngClass]="user.userIsChecked ? 'row user-list user-list-checked' : 'row user-list'" *ngFor="let user of userList">
+
+      <!--checkbox-->
+      <div class="col-xs-1">
+        <div id="checkActive">
+          <label>
+            <input type="checkbox" (click)="checkUser(user)" [checked]="user.userIsChecked">
+          </label>
+        </div>
+      </div>
+
+      <!--basic info-->
+      <div class="col-xs-3">
+
+        <!--Profile picture-->
+        <div>
+          <div class="user-pic col-xs-2">
+            <img src="{{user.userPicture}}" width="50" height="50">
+          </div>
+
+          <!--Username and email-->
+          <div class="col-xs-10">
+            <p class="username">{{user.userName}}</p>
+            <p class="user-email">{{user.userEmail}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!--total score-->
+      <div class="col-xs-3">
+        <div class="user-score-position">
+          <p class="user-score">{{user.userScore}}</p>
+        </div>
+      </div>
+
+      <!--role-->
+      <div class="col-xs-2">
+        <div class="user-role">
+          <p class="user-role-text">{{user.userRole}}</p>
+        </div>
+      </div>
+
+      <!--date created-->
+      <div class="col-xs-2">
+        <div class="user-date">
+          <p class="user-date-text">{{user.userDate}}</p>
+        </div>
+      </div>
+
+      <!--context menu-->
+      <div class="col-xs-1">
+        <p id="dots" class="dots-menu" (click)="user.userIsEditing && onContextMenuClick(user)" ><i class="fas fa-ellipsis-h"></i></p>
+
+        <div id="menu" class="context-menu" *ngIf="user.showMenu" (mouseleave)="onMouseLeave(user)">
+          <!--edit-->
+          <p class="menu-option" (click)="showEdit(user)"><i class="far fa-edit"></i> Edit</p>
+          <!--delete-->
+          <p class="menu-option" (click)="deleteUser(user)"><i class="fas fa-trash-alt"></i>  Delete</p>
+          <!--change role-->
+          <p class="menu-option" (click)="changeUserRole(user)"><i class="fas fa-key"></i>  {{user.userChangeRole}}</p>
+        </div>
+      </div>
+
+      <!--edit user-->
+      <div class="col-xs-12 user-list-edit" *ngIf="user.showEdit">
+
+        <!--username input-->
+        <div class="col-xs-3">
+          <input [(ngModel)]="TempUser.Username" type="text" name="name" class="input-textbox user-list-inputs" placeholder="username">
+          <p *ngIf="ErrorMessages.isNameEmpty || !ErrorMessages.isNameValid || !ErrorMessages.isEntireName" class="err err-name">{{ErrorMessages.name_msg}}</p>
+        </div>
+
+        <!--email input-->
+        <div class="col-xs-3">
+          <input [(ngModel)]="TempUser.Email" type="text" name="email" class="input-textbox user-list-inputs user-email-input" placeholder="email">
+          <p *ngIf="ErrorMessages.isEmailEmpty || !ErrorMessages.isEmailValid" class="err err-email">{{ErrorMessages.email_msg}}</p>
+        </div>
+
+        <!--confirm edit-->
+        <div class="col-xs-3">
+          <button [ngClass]="isDataSaved ? 'btn btn-primary standard-btn btn-save btn-save-saved':'btn btn-primary standard-btn btn-save'" (click)="saveUserEdit(user)">Save</button>
+        </div>
+
+        <!--exit edit-->
+        <div class="col-xs-3">
+          <button class="btn btn-primary standard-btn btn-cancel" (click)="closeEdit(user)">Close</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

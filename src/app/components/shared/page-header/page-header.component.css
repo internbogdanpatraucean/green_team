@@ -1,0 +1,42 @@
+.navbar-style {
+    border: 1px solid #EFF1F4;
+    box-shadow: 0 2px 4px 0 rgba(239,241,244,0.4);
+    padding: 20px 50px 20px 50px;
+    margin-bottom: 0px;
+}
+.menu-option {
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.profile-pic {
+  margin-top: 5px;
+  border-radius: 50%;
+}
+
+.nav.navbar-nav.navbar-right li a {
+  color: #00217A;
+}
+
+.bell {
+  color: #AEB5BB;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+
+.user-score {
+    color: #FFFFFF;
+    background-color: #006FFF;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 14px;
+    height: 16px;
+    width: 33px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 1px;
+}

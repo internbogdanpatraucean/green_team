@@ -54,28 +54,28 @@ export class RegisterComponent implements OnInit {
   }
 
   validateData() {
-    if (this.validation.checkEmpty(this.newUser.first_name)) {
+    if (this.validation.checkEmpty(this.newUser.first_name) || this.validation.isOnlySpaces(this.newUser.first_name)) {
       this.errorMessage.isFirstNameEmpty = true;
       this.errorMessage.first_name_msg = 'required';
     } else {
       this.errorMessage.isFirstNameEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.newUser.last_name)) {
+    if (this.validation.checkEmpty(this.newUser.last_name) || this.validation.isOnlySpaces(this.newUser.last_name)) {
       this.errorMessage.isLastNameEmpty = true;
       this.errorMessage.last_name_msg = 'required';
     } else {
       this.errorMessage.isLastNameEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.newUser.email)) {
+    if (this.validation.checkEmpty(this.newUser.email) || this.validation.isOnlySpaces(this.newUser.email)) {
       this.errorMessage.isEmailEmpty = true;
       this.errorMessage.email_msg = 'required';
     } else {
       this.errorMessage.isEmailEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.newUser.password)) {
+    if (this.validation.checkEmpty(this.newUser.password) || this.validation.isOnlySpaces(this.newUser.password)) {
       this.errorMessage.isPasswordEmpty = true;
       this.errorMessage.password_msg = 'required';
     } else {
