@@ -31,4 +31,8 @@ export class ValidationService {
     const check = name.split(' ', 3);
     return check.length < 2;
   }
+
+  isOnlySpaces(input: string): boolean {
+    return !input.replace(/\s/g, '').length;
+  }
 }

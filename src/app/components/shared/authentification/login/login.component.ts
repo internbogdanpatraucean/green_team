@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   public errorMessage = {
     isEmailValid: true,
     isPassValid: true,
-    isEmailEmpty: true,
-    isPassEmpty: true,
+    isEmailEmpty: false,
+    isPassEmpty: false,
     isServerError: false,
     msgEmail: ' ',
     msgPass: ' ',
@@ -48,18 +48,17 @@ export class LoginComponent implements OnInit {
   }
 
    onLogin() {
-    //  if (!this.checkData()) {
+     if (!this.checkData()) {
      this.loginService.login(this.person).subscribe(response => {
-       debugger;
        console.log(response);
      });
-    debugger;
+    }
     }
 
   checkData(): boolean {
 
     let ok = true;
-    if (this.validation.checkEmpty(this.person.email)) {
+    if (this.validation.checkEmpty(this.person.email)  || this.validation.isOnlySpaces(this.person.email)) {
       this.errorMessage.isEmailEmpty =  true;
       this.errorMessage.msgEmail = 'email required';
       ok = false;
@@ -67,7 +66,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage.isEmailEmpty =  false;
     }
 
-    if (this.validation.checkEmpty(this.person.password)) {
+    if (this.validation.checkEmpty(this.person.password)  || this.validation.isOnlySpaces(this.person.password)) {
       this.errorMessage.isPassEmpty =  true;
       this.errorMessage.msgPass = 'password required';
       ok = false;

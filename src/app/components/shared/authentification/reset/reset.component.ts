@@ -20,11 +20,11 @@ export class ResetComponent implements OnInit {
 
   errorMessage = {
     isEmailEmpty: false,
-    isEmailValid: false,
+    isEmailValid: true,
     isNewPassEmpty: false,
-    isNewPassValid: false,
+    isNewPassValid: true,
     isConfirmPassEmpty: false,
-    isConfirmPassValid: false,
+    isConfirmPassValid: true,
     isGenericError: false,
     email_msg: '',
     pass_msg: '',
@@ -58,7 +58,7 @@ export class ResetComponent implements OnInit {
   }
 
   validateEmail(): boolean {
-    if (this.validation.checkEmpty(this.resetPassword.userEmail)) {
+    if (this.validation.checkEmpty(this.resetPassword.userEmail) || this.validation.isOnlySpaces(this.resetPassword.userEmail)) {
       this.errorMessage.email_msg = 'required';
       this.errorMessage.isEmailEmpty = true;
       return false;
@@ -75,14 +75,16 @@ export class ResetComponent implements OnInit {
   }
 
   validatePassword(): boolean {
-    if (this.validation.checkEmpty(this.resetPassword.userNewPassword)) {
+    // tslint:disable-next-line:max-line-length
+    if (this.validation.checkEmpty(this.resetPassword.userNewPassword) || this.validation.isOnlySpaces(this.resetPassword.userNewPassword)) {
       this.errorMessage.pass_msg = 'required';
       this.errorMessage.isNewPassEmpty = true;
     } else {
       this.errorMessage.isNewPassEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.resetPassword.userConfirmPassword)) {
+    // tslint:disable-next-line:max-line-length
+    if (this.validation.checkEmpty(this.resetPassword.userConfirmPassword) || this.validation.isOnlySpaces(this.resetPassword.userConfirmPassword)) {
       this.errorMessage.confirm_pass_msg = 'required';
       this.errorMessage.isConfirmPassEmpty = true;
     } else {

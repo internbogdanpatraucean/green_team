@@ -54,6 +54,10 @@
 
 }
 
+.input-textbox-err {
+  box-shadow: 1px 1px 1px #c44569, 0 0 15px #c44569, 0 0 1px #c44569;
+}
+
 .input-textbox-group{
   margin-bottom: 10px;
 }
@@ -111,16 +115,11 @@
 
 .btn-show-pass{
   position: absolute;
-  margin-top: 1px;
   border:none;
   color: #006fff;
   margin-left: -45px;
   font-size: 14px;
   height:15px;
   background-color: transparent;
-  outline: none;
-}
-
-.btn :active {
   outline: none;
 }

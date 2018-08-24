@@ -75,7 +75,7 @@ export class MyAccountComponent implements OnInit {
 
     let ok = true;
 
-    if (this.validation.checkEmpty(this.tempUserName)) {
+    if (this.validation.checkEmpty(this.tempUserName) || this.validation.isOnlySpaces(this.tempUserName)) {
       this.errorMessage.isNameEmpty = true;
       this.errorMessage.name_msg = 'field required';
       ok = false;
@@ -100,7 +100,7 @@ export class MyAccountComponent implements OnInit {
       this.errorMessage.isEntireName = true;
     }
 
-    if (this.validation.checkEmpty(this.tempUserPass)) {
+    if (this.validation.checkEmpty(this.tempUserPass) || this.validation.isOnlySpaces(this.tempUserPass)) {
       this.errorMessage.isPassEmpty = true;
       this.errorMessage.pass_msg = 'field required';
       ok = false;
@@ -116,7 +116,7 @@ export class MyAccountComponent implements OnInit {
       this.errorMessage.isPassValid = true;
     }
 
-    if (this.validation.checkEmpty(this.tempUserEmail)) {
+    if (this.validation.checkEmpty(this.tempUserEmail) || this.validation.isOnlySpaces(this.tempUserEmail)) {
       this.errorMessage.email_msg = 'field required';
       this.errorMessage.isEmailEmpty = true;
       ok = false;

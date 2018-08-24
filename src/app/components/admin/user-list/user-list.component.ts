@@ -91,7 +91,7 @@ export class UserListComponent implements OnInit {
   validateEditData(): boolean {
     let ok = true;
 
-    if (this.validation.checkEmpty(this.TempUser.Username)) {
+    if (this.validation.checkEmpty(this.TempUser.Username) || this.validation.isOnlySpaces(this.TempUser.Username)) {
       this.ErrorMessages.name_msg = 'field required';
       this.ErrorMessages.isNameEmpty = true;
       ok = false;
@@ -115,7 +115,7 @@ export class UserListComponent implements OnInit {
       this.ErrorMessages.isNameValid = true;
     }
 
-    if (this.validation.checkEmpty(this.TempUser.Email)) {
+    if (this.validation.checkEmpty(this.TempUser.Email) || this.validation.isOnlySpaces(this.TempUser.Email)) {
       this.ErrorMessages.email_msg = 'field required';
       this.ErrorMessages.isEmailEmpty = true;
       ok = false;

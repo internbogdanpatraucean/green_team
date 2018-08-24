@@ -51,6 +51,10 @@
   display: inline;
 }
 
+.input-textbox-err {
+  box-shadow: 1px 1px 1px #c44569, 0 0 15px #c44569, 0 0 1px #c44569;
+}
+
 .input-textbox-group{
   margin-bottom: 10px;
 }
@@ -92,9 +96,9 @@
 }
 
 .generic-err{
-  padding-left: 45px;;
+  text-align: center;
   font-size: 15px;
-  max-width: 300px;
+  max-width: 280px;
   justify-content: center;
   font-family: Roboto;
 }
@@ -116,6 +120,6 @@
   font-size: 14px;
   height:15px;
   background-color: transparent;
-  outline: none;
+  outline: inherit;
 }
 
