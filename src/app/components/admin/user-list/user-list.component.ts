@@ -134,6 +134,14 @@ export class UserListComponent implements OnInit {
     return ok;
   }
 
+  refreshValidation() {
+    this.ErrorMessages.isNameValid = true;
+    this.ErrorMessages.isNameEmpty = false;
+    this.ErrorMessages.isEmailValid = true;
+    this.ErrorMessages.isEmailEmpty = false;
+    this.ErrorMessages.isEntireName = true;
+  }
+
   saveUserEdit(user: User) {
     if (this.TempUser.Username !== user.userName || this.TempUser.Email !== user.userEmail) {
       if (this.validateEditData()) {
@@ -148,6 +156,9 @@ export class UserListComponent implements OnInit {
       }, 2000);
 
      }
+    } else {
+      this.refreshValidation(); // user can write something wrong but then but it`s initial data back
+      // this way if data is not new we do not update anything, so we refresh validation to all ok
     }
   }
 }
