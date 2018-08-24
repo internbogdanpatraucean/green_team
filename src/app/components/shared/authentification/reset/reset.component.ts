@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 
 @Component({
   selector: 'app-reset',
