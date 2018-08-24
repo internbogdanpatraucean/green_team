@@ -2,6 +2,7 @@
     border: 1px solid #EFF1F4;
     box-shadow: 0 2px 4px 0 rgba(239,241,244,0.4);
     padding: 20px 50px 20px 50px;
+    margin-bottom: 0px;
 }
 .menu-option {
     font-family: Roboto;
