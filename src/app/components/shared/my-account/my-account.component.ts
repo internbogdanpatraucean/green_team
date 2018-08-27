@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
 import { StartedCourse } from './my-account-courses.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
@@ -51,7 +52,8 @@ export class MyAccountComponent implements OnInit {
   value = 50;
   bufferValue = 75;
 
-  constructor(private validation: ValidationService) {
+  constructor(private validation: ValidationService,
+  private router: Router) {
     this.initUserData();
    }
 
@@ -172,5 +174,10 @@ export class MyAccountComponent implements OnInit {
    this.started_courses.splice(this.started_courses.indexOf(course), 1);
 
    // delete it also from the database
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate([('/login')]);
   }
 }
