@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidationService} from 'src/app/services/validation/validation.service';
-import { LoginServiceService } from '../../../../services/authentificationService/login-service.service';
-
+import { ValidationService } from 'src/app/services/validation/validation.service';
+import { LoginServiceService } from 'src/app/services/authentificationService/login-service.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
   public person = {
     email: '',
@@ -18,18 +18,20 @@ export class LoginComponent implements OnInit {
   public errorMessage = {
     isEmailValid: true,
     isPassValid: true,
-    isEmailEmpty: false,
-    isPassEmpty: false,
+    isEmailEmpty: true,
+    isPassEmpty: true,
     isServerError: false,
     msgEmail: ' ',
     msgPass: ' ',
     msgGeneric: 'Data not found on the server'
   };
 
-  constructor(private validation: ValidationService, private loginService: LoginServiceService) {}
+  constructor(
+    private validation: ValidationService,
+    private loginService: LoginServiceService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   checkEmailDB(): boolean {
     return this.person.email === 'bogyp@yahoo.com';
@@ -41,33 +43,34 @@ export class LoginComponent implements OnInit {
 
   showHidePassword() {
     if (this.person.passType === 'text') {
-        this.person.passType = 'password';
-      } else {
-        this.person.passType = 'text';
-      }
+      this.person.passType = 'password';
+    } else {
+      this.person.passType = 'text';
+    }
   }
 
-   onLogin() {
-     if (!this.checkData()) {
-     this.loginService.login(this.person).subscribe(response => {
-       console.log(response);
-     });
+  onLogin() {
+    if (!this.checkData()) {
+      this.loginService.login(this.person).subscribe(response => {
+        debugger;
+        console.log(response);
+      });
     }
-    }
+    debugger;
+  }
 
   checkData(): boolean {
-
     let ok = true;
-    if (this.validation.checkEmpty(this.person.email)  || this.validation.isOnlySpaces(this.person.email)) {
-      this.errorMessage.isEmailEmpty =  true;
+    if (this.validation.checkEmpty(this.person.email)) {
+      this.errorMessage.isEmailEmpty = true;
       this.errorMessage.msgEmail = 'email required';
       ok = false;
     } else {
-      this.errorMessage.isEmailEmpty =  false;
+      this.errorMessage.isEmailEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.person.password)  || this.validation.isOnlySpaces(this.person.password)) {
-      this.errorMessage.isPassEmpty =  true;
+    if (this.validation.checkEmpty(this.person.password)) {
+      this.errorMessage.isPassEmpty = true;
       this.errorMessage.msgPass = 'password required';
       ok = false;
     } else {
@@ -87,7 +90,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage.msgPass = 'password incorrect';
       ok = false;
     } else {
-      this.errorMessage.isPassValid =  true;
+      this.errorMessage.isPassValid = true;
     }
     return ok;
   }

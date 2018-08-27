@@ -5,7 +5,7 @@
   used for the admin - this component displays all the courses and offers the ability
   to create a new course, edit or remove an existing course.
 -->
-
+<app-page-header></app-page-header>
 <form action="" class="primary-form">
 
   <div class="course-image">
@@ -30,7 +30,7 @@
               <i class="fas fa-trash-alt"></i>
             </button>
           </div>
-          
+
           <div class="row Descriere-div">
             <p> {{course.name}} </p>
             <input id="edit-id" type="text" class="edit-input" *ngIf="course.checked" [(ngModel)]="course.afterEdit" name="editCourseName" placeholder="Course..">
