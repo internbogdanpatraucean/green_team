@@ -51,14 +51,13 @@
   background-color: #ffffff;
   padding-top: -100px;
   display: inline;
-
 }
 
 .input-textbox-err {
   box-shadow: 1px 1px 1px #c44569, 0 0 15px #c44569, 0 0 1px #c44569;
 }
 
-.input-textbox-group{
+.input-textbox-group {
   margin-bottom: 10px;
 }
 
@@ -77,14 +76,13 @@
   height: 100%;
 }
 
-.login-form{
-  float:right;
+.login-form {
+  float: right;
   width: 50%;
   padding-top: 400px;
-
 }
 
-.forgot-password{
+.forgot-password {
   padding-top: 20px;
   font-size: 100%;
   color: white;
@@ -94,32 +92,63 @@
   padding-left: 35px;
 }
 
-.btn{
-  white-space:normal;
+.btn {
+  white-space: normal;
 }
 
-.err{
+.err {
   display: inline;
-  padding-left: 20px;;
+  padding-left: 20px;
   font-size: 15px;
   font-family: Roboto;
 }
 
-.generic-err{
-  padding-left: 45px;;
+.generic-err {
+  padding-left: 45px;
   font-size: 15px;
   max-width: 250px;
   justify-content: center;
   font-family: Roboto;
 }
 
-.btn-show-pass{
+.btn-show-pass {
   position: absolute;
-  border:none;
+  border: none;
   color: #006fff;
   margin-left: -45px;
   font-size: 14px;
-  height:15px;
+  height: 15px;
   background-color: transparent;
   outline: none;
+}
+
+.no-account {
+  height: 4.69%;
+  width: 13.13%;
+  color: #f7f7f7;
+  font-family: Roboto;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+  display: inline;
+}
+
+.sign-up-btn {
+  height: 4.69%;
+  width: 6.31%;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 18px;
+  /* font-weight: bold; */
+  line-height: 21px;
+  text-align: center;
+  border-radius: 5px;
+  display: inline;
+  background-color: #006fff;
+  margin-left: 10px;
+}
+
+.sign-up-div {
+  text-align: center;
+  padding-top: 150px;
 }

@@ -9,6 +9,10 @@ import { LoginServiceService } from 'src/app/services/authentificationService/lo
 })
 
 export class LoginComponent implements OnInit {
+
+  tempEmail = '';
+  tempPass = '';
+
   public person = {
     email: '',
     password: '',
@@ -18,8 +22,8 @@ export class LoginComponent implements OnInit {
   public errorMessage = {
     isEmailValid: true,
     isPassValid: true,
-    isEmailEmpty: true,
-    isPassEmpty: true,
+    isEmailEmpty: false,
+    isPassEmpty: false,
     isServerError: false,
     msgEmail: ' ',
     msgPass: ' ',
@@ -34,10 +38,12 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   checkEmailDB(): boolean {
+    // if this exists, request to server
     return this.person.email === 'bogyp@yahoo.com';
   }
 
   checkPasswordDB(): boolean {
+    // if this exists, request to server
     return this.person.password === '123';
   }
 
@@ -52,11 +58,11 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (!this.checkData()) {
       this.loginService.login(this.person).subscribe(response => {
-        debugger;
-        console.log(response);
+        console.log('raspunsul' + response);
       });
+    } else {
+      console.log('logare respinsa');
     }
-    debugger;
   }
 
   checkData(): boolean {
