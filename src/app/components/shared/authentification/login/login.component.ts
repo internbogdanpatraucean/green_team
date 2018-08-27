@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
-import { LoginServiceService } from 'src/app/services/authentificationService/login-service.service';
+import { LoginService } from 'src/app/services/authentificationService/login-service.service';
+import { User } from './user.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +12,8 @@ import { LoginServiceService } from 'src/app/services/authentificationService/lo
 
 export class LoginComponent implements OnInit {
 
-  tempEmail = '';
-  tempPass = '';
-
-  public person = {
-    email: '',
-    password: '',
-    passType: 'password'
-  };
+  passType = 'password';
+  user: User;
 
   public errorMessage = {
     isEmailValid: true,
@@ -32,42 +28,48 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private validation: ValidationService,
-    private loginService: LoginServiceService
-  ) {}
+    private loginService: LoginService,
+    private router: Router
+  ) {
+    this.user = new User();
+  }
 
   ngOnInit() {}
 
-  checkEmailDB(): boolean {
-    // if this exists, request to server
-    return this.person.email === 'bogyp@yahoo.com';
-  }
-
-  checkPasswordDB(): boolean {
-    // if this exists, request to server
-    return this.person.password === '123';
-  }
-
   showHidePassword() {
-    if (this.person.passType === 'text') {
-      this.person.passType = 'password';
+    if (this.passType === 'text') {
+      this.passType = 'password';
     } else {
-      this.person.passType = 'text';
+      this.passType = 'text';
     }
   }
 
   onLogin() {
-    if (!this.checkData()) {
-      this.loginService.login(this.person).subscribe(response => {
-        console.log('raspunsul' + response);
+    if (this.checkData()) {
+      this.loginService.login(this.user).subscribe(res => {
+        console.log(res);
+        if (!res) {
+          this.errorMessage.isEmailValid = false;
+          this.errorMessage.isPassValid = false;
+          this.errorMessage.msgEmail = `email or password incorrect`;
+        } else {
+          this.errorMessage.isEmailValid = true;
+          this.errorMessage.isPassValid = true;
+
+          localStorage.clear();
+          localStorage.setItem('user_token', res.token);
+          this.router.navigate(['/dashboard']);
+        }
       });
     } else {
-      console.log('logare respinsa');
+      localStorage.clear();
+      // log in rejected
     }
   }
 
   checkData(): boolean {
     let ok = true;
-    if (this.validation.checkEmpty(this.person.email)) {
+    if (this.validation.checkEmpty(this.user.email)) {
       this.errorMessage.isEmailEmpty = true;
       this.errorMessage.msgEmail = 'email required';
       ok = false;
@@ -75,28 +77,12 @@ export class LoginComponent implements OnInit {
       this.errorMessage.isEmailEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.person.password)) {
+    if (this.validation.checkEmpty(this.user.password)) {
       this.errorMessage.isPassEmpty = true;
       this.errorMessage.msgPass = 'password required';
       ok = false;
     } else {
       this.errorMessage.isPassEmpty = false;
-    }
-
-    if (!this.checkEmailDB() && !this.errorMessage.isEmailEmpty) {
-      this.errorMessage.isEmailValid = false;
-      this.errorMessage.msgEmail = `email not found |  <a href="/register">Register?</a>`;
-      ok = false;
-    } else {
-      this.errorMessage.isEmailValid = true;
-    }
-
-    if (!this.checkPasswordDB() && !this.errorMessage.isPassEmpty) {
-      this.errorMessage.isPassValid = false;
-      this.errorMessage.msgPass = 'password incorrect';
-      ok = false;
-    } else {
-      this.errorMessage.isPassValid = true;
     }
     return ok;
   }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from './components/shared/authentification/authGuard.service';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -29,23 +30,23 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'reset', component: ResetComponent},
-  { path: 'account', component: MyAccountComponent },
-  { path: 'users', component: UserListComponent },
-  { path: 'users/:id', component: UserComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'courses', component: CourseListComponent },
-  { path: 'course-finish', component: CourseFinishComponent },
-  { path: 'chapters-list', component: ChapterListComponent },
-  { path: 'chapter', component: ChapterComponent },
-  { path: 'chapter-questions', component: ChapterQuestionsComponent },
+  { path: 'account', component: MyAccountComponent, canActivate: [AuthGuardService] },
+  { path: 'users', component: UserListComponent, canActivate: [AuthGuardService] },
+  { path: 'users/:id', component: UserComponent, canActivate: [AuthGuardService] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService] },
+  { path: 'courses', component: CourseListComponent, canActivate: [AuthGuardService] },
+  { path: 'course-finish', component: CourseFinishComponent, canActivate: [AuthGuardService] },
+  { path: 'chapters-list', component: ChapterListComponent, canActivate: [AuthGuardService] },
+  { path: 'chapter', component: ChapterComponent, canActivate: [AuthGuardService] },
+  { path: 'chapter-questions', component: ChapterQuestionsComponent, canActivate: [AuthGuardService] },
 
   {
     path: 'courses/:id',
-    component: ChapterListComponent
+    component: ChapterListComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'courses/:courseId/:chapterId',
-    component: ChapterQuestionsComponent
+    component: ChapterQuestionsComponent, canActivate: [AuthGuardService]
   },
   { path: '**', redirectTo: 'dashboard' }
 ];
@@ -77,7 +78,7 @@ const routes: Routes = [
     HttpClientModule,
     [RouterModule.forRoot(routes)]
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 
