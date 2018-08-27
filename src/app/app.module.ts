@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'courses', component: CourseListComponent },
   { path: 'course-finish', component: CourseFinishComponent },
   { path: 'chapters-list', component: ChapterListComponent },
-  { path: 'chapters', component: ChapterComponent },
+  { path: 'chapter', component: ChapterComponent },
   { path: 'chapter-questions', component: ChapterQuestionsComponent },
 
   {
