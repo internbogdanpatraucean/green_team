@@ -72,7 +72,7 @@ text-align: center;
 }
 .name-text{
     height: 29px;
-    width: 61%;
+    width: 70%;
     margin-left:1%;
     border-radius: 5px;
 }
@@ -84,7 +84,7 @@ text-align: center;
     line-height: 19px;
     height: 29px;
     width: 10%;
-    margin-left:2%;
+    margin-left:20%;
     border-radius: 5px;
 }
 .edit-button{

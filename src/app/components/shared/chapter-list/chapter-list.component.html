@@ -9,19 +9,25 @@
     </div>
     <div class="container ">
         <div class="row buttons-div">
-            <input id="chapterName" type="text" class="name-text" [(ngModel)]="chapterName" name="name" placeholder="Give me a category name...">
+            <input id="chapterName" type="text" class="name-text" [(ngModel)]="chapterName" name="name" placeholder="Give me a chapter name...">
             <button class="create-button" (click)="onCreateButton($event)">Create</button>
-            <button class="edit-button" (click)="onEditButton()">Edit</button>
-            <button class="delete-button" (click)="onDeleteButton()">Delete</button>
         </div>
         <div class="row chapter-div">
-            <div class=" " *ngFor="let chapter of newChapters">
+            <div class="prim-aranjare" *ngFor="let chapter of newChapters; let i= index">
                 <div class="aranjare">
-                    <label class="nrCapitol-label" for="">Chapter {{chapter.capitol}}</label>
+                    <label class="nrCapitol-label" for="">Chapter {{i+1}}</label>
                     <label class="numeCapitol-label" for="">{{chapter.name}}</label>
+                    <input id="edit-id" type="text" class="edit-input" *ngIf="chapter.checked" [(ngModel)]="chapter.afterEdit" name="editChapterName"
+                        placeholder="Chapter..">
                     <label class="descCapitol-label" for="">{{chapter.descriere}}</label>
                 </div>
                 <div class="btn-aranjare">
+                    <button class="edit-button" (click)="onEditButton(chapter)">
+                        <i class="far fa-edit"></i>
+                    </button>
+                    <button class="edit-button delete" (click)="onDeleteButton(chapter)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                     <button class=" startButton">Start</button>
                 </div>
             </div>

@@ -1,14 +1,15 @@
 export class Chapter {
     public name: string;
-    public capitol: string;
-    // public imagePath: string;
+    // public capitol: number;
     public descriere: string;
+    public checked:boolean;
+    public afterEdit:string;
 
-    constructor(name: string, capitol: string, /*imagePath: string,*/ descriere: string) {
+    constructor(name: string,/* capitol: number,*/  descriere: string) {
         this.name = name;
-        this.capitol = capitol;
-        // this.imagePath = imagePath;
+        // this.capitol = capitol;
         this.descriere = descriere;
-
+        this.checked=false;
+        this.afterEdit='';
     }
 }
