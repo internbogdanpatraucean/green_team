@@ -11,62 +11,55 @@ import { splitAtColon } from '@angular/compiler/src/util';
 
 export class CourseListComponent implements OnInit {
  courseName='';
-  course: Course[] = [
+ searchName = '';
+ index = 6; 
+
+  courses: Course[] = [
 
   ];
 
-  newCourse: Course[] = this.course.slice(0, 6);
-  searchName = '';
-  index = 6;
+  newCourse: Course[] = this.courses.slice(0, 6);
+  
   ngOnInit() {
   }
-  onCreateButton(event: Event) {
+
+  onCreateButton(event) {
     if (this.courseName == '') {
-      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to add...";
-    } else{
-        this.course.push(new Course(this.courseName.toUpperCase(), '#', '/../../assets/money.jpeg', 'red'));
+      (<HTMLInputElement>document.getElementById("categoryName")).placeholder = "Enter the categories to add...";
+    } else {
+      if (this.courses.find((item) => item.name === this.courseName.toUpperCase()) != null) {
+        return;
+      }
+      this.courses.push(new Course(this.courseName.toUpperCase(), '#', '/../../assets/money.jpeg', 'red'));
     }
-    this.newCourse = this.course.slice(0, 6);
-
-    
-
-    console.log(this.course);
+    this.newCourse = this.courses.slice(0, 6);
+    console.log(this.courses);
   }
 
-  onEditButton() {
-    if (this.courseName == '') {
-      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to edit...";
-    } else {
-      for (var i = 0; i < this.course.length; i++) {
-        if (this.course[i].name.toLowerCase().indexOf(this.courseName.toLowerCase()) > -1) {
-          (<HTMLInputElement>document.getElementById("courseName")).innerText = "";
-          console.log("eeeee");
-          
+  onEditButton(course: Course) {
+    course.checked = !course.checked;
+    if (course.afterEdit !== '') {
+      {
+        if (this.courses.find((item) => item.name === course.afterEdit.toUpperCase()) != null) {
+          return;
         }
       }
+      course.name = course.afterEdit.toUpperCase();
     }
   }
-  onDeleteButton() {
-    if (this.courseName == '') {
-      (<HTMLInputElement>document.getElementById("courseName")).placeholder = "Enter the category to delete...";
-    } else {
-      for (var i = 0; i < this.course.length; i++) {
-        //compara numele introdus cu numele tuturor obiectelor
-        if (this.course[i].name.toLowerCase().indexOf(this.courseName.toLowerCase()) > -1) {
-          var elem = this.course.splice(i, 1);
-          this.newCourse = this.course.slice(0, 6);
-          console.log(elem);
+ 
+  onDeleteButton(course: Course) {
+    console.log("dddfaf");
 
-        }
-      }
-    }
+    this.newCourse.splice(this.newCourse.indexOf(course),1);
+    this.courses.splice(this.courses.indexOf(course),1);
   }
   
   onClickDiscover() {
-    this.newCourse = this.course.slice(this.index, this.index + 6);
+    this.newCourse = this.courses.slice(this.index, this.index + 6);
     this.index += 6;
     this.searchName = "";
-    if (this.index >= this.course.length) {
+    if (this.index >= this.courses.length) {
       this.index = 0;
     }
   }

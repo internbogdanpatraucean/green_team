@@ -50,10 +50,24 @@ display: inline-block;
     font-weight: bold;	
     line-height: 21px;
 }
+.startTest{
+    margin-top: 200px;
+    margin-bottom:3%;
+    margin-left: 15%;
+    height: 29px;	
+    /* width: 140px;	 */
+    border: 1px solid #006FFF;	
+    border-radius: 5px;
+    color: #006FFF;	
+    font-family: Roboto;	
+    font-size: 16px;	
+    line-height: 19px;	
+    text-align: center;
+}
 .prev-button{
-    margin-top: 6%;
-    /* margin-bottom:3%; */
-    margin-left: 71.5%;
+    margin-top: 200px;
+    margin-bottom:3%;
+    margin-left: 43%;
     height: 29px;	
     /* width: 140px;	 */
     border: 1px solid #006FFF;	
