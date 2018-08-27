@@ -47,10 +47,9 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.checkData()) {
       this.loginService.login(this.user).subscribe(res => {
-        console.log(res);
         if (!res) {
           this.errorMessage.isEmailValid = false;
-          this.errorMessage.isPassValid = false;
+          this.errorMessage.isPassValid = true;
           this.errorMessage.msgEmail = `email or password incorrect`;
         } else {
           this.errorMessage.isEmailValid = true;
@@ -80,9 +79,11 @@ export class LoginComponent implements OnInit {
     if (this.validation.checkEmpty(this.user.password)) {
       this.errorMessage.isPassEmpty = true;
       this.errorMessage.msgPass = 'password required';
+      console.log("parola" + this.user.password);
       ok = false;
     } else {
       this.errorMessage.isPassEmpty = false;
+      console.log("SAdada");
     }
     return ok;
   }
