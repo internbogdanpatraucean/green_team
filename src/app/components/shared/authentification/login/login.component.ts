@@ -45,22 +45,15 @@ export class LoginComponent implements OnInit {
   onLogin() {
     if (this.checkData()) {
       this.loginService.login(this.user).subscribe(
-        res => {
-          if (!res) {
-            this.errorMessage.isEmailValid = false;
-            this.errorMessage.isPassValid = true;
-            this.errorMessage.msgEmail = `email or password incorrect`;
-          } else {
-            this.errorMessage.isEmailValid = true;
-            this.errorMessage.isPassValid = true;
-
+        succes => {
             localStorage.clear();
-            localStorage.setItem('user_token', res.token);
+            localStorage.setItem('user_token', succes.token);
             this.router.navigate(['/dashboard']);
-          }
         },
         error => {
-          console.log("eroare" + error.status);
+          this.errorMessage.isEmailValid = false;
+          this.errorMessage.isPassValid = true;
+          this.errorMessage.msgEmail = `email or password incorrect`;
           return error;
         }
       );

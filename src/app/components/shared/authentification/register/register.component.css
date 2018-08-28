@@ -111,10 +111,9 @@
 }
 
 .generic-err{
-  padding-left: 45px;;
   font-size: 15px;
-  max-width: 250px;
-  justify-content: center;
+  max-width: 180px;
+  text-align: center;
   font-family: Roboto;
 }
 

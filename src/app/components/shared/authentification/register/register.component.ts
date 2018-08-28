@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ValidationService } from '../../../../services/validation/validation.service';
 import { NewUser } from './NewUser.model';
 import { RegisterService } from './../../../../services/RegisterService/register-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -34,7 +35,8 @@ export class RegisterComponent implements OnInit {
   };
 
   constructor(private validation: ValidationService,
-              private register: RegisterService) {
+              private register: RegisterService,
+              private router: Router) {
     this.newUser = new NewUser();
   }
 
@@ -53,14 +55,14 @@ export class RegisterComponent implements OnInit {
   }
 
   validateData() {
-    if (this.validation.checkEmpty(this.newUser.first_name) || this.validation.isOnlySpaces(this.newUser.first_name)) {
+    if (this.validation.checkEmpty(this.newUser.firstName) || this.validation.isOnlySpaces(this.newUser.firstName)) {
       this.errorMessage.isFirstNameEmpty = true;
       this.errorMessage.first_name_msg = 'required';
     } else {
       this.errorMessage.isFirstNameEmpty = false;
     }
 
-    if (this.validation.checkEmpty(this.newUser.last_name) || this.validation.isOnlySpaces(this.newUser.last_name)) {
+    if (this.validation.checkEmpty(this.newUser.lastName) || this.validation.isOnlySpaces(this.newUser.lastName)) {
       this.errorMessage.isLastNameEmpty = true;
       this.errorMessage.last_name_msg = 'required';
     } else {
@@ -82,14 +84,14 @@ export class RegisterComponent implements OnInit {
     }
 
 
-    if (!this.validation.isLetter(this.newUser.first_name) && !this.errorMessage.isFirstNameEmpty) {
+    if (!this.validation.isLetter(this.newUser.firstName) && !this.errorMessage.isFirstNameEmpty) {
       this.errorMessage.isFirstNameValid = false;
       this.errorMessage.first_name_msg = 'only characters allowed';
     } else {
       this.errorMessage.isFirstNameValid = true;
     }
 
-    if (!this.validation.isLetter(this.newUser.last_name) && !this.errorMessage.isLastNameEmpty) {
+    if (!this.validation.isLetter(this.newUser.lastName) && !this.errorMessage.isLastNameEmpty) {
       this.errorMessage.isLastNameValid = false;
       this.errorMessage.last_name_msg = 'only characters allowed';
     } else {
@@ -119,7 +121,18 @@ export class RegisterComponent implements OnInit {
       && !this.errorMessage.isPasswordEmpty && this.isTermsChecked && this.errorMessage.isFirstNameValid
       && this.errorMessage.isLastNameValid && this.errorMessage.isEmailValid) {
       console.log('tat ii bun');
-      this.register.register(this.newUser);
+      this.register.register(this.newUser).subscribe(
+        succes => {
+          this.errorMessage.isGenericError = false;
+          this.router.navigate(['/login']);
+        },
+        error => {
+            this.errorMessage.isGenericError = true;
+            if (error.error === 'Validation error') {
+              this.errorMessage.genericErr_msg = 'Email already registered';
+            }
+        }
+      );
     } else {
       console.log('nu-i bun');
     }

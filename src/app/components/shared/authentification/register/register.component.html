@@ -12,12 +12,12 @@
         <p id="generic-error" class="text-danger generic-err" *ngIf='errorMessage.isGenericError' [innerHTML]="errorMessage.genericErr_msg"></p>
         <div class="form-group input-textbox-group">
           <label for="InputFirstName"></label>
-          <input [(ngModel)] = "newUser.first_name" name="first_name" type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name" [ngClass]="errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
+          <input [(ngModel)] = "newUser.firstName" name="first_name" type="text" class="form-control input-textbox" id="InputFirstName"  placeholder="first name" [ngClass]="errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
           <p id="first-name-error" class="err text-danger" *ngIf='errorMessage.isFirstNameEmpty || !errorMessage.isFirstNameValid' [innerHTML]="errorMessage.first_name_msg"></p>
         </div>
         <div class="form-group input-textbox-group">
             <label for="InputLastName"></label>
-            <input [(ngModel)]="newUser.last_name" name="last_name" type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name" [ngClass]="errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
+            <input [(ngModel)]="newUser.lastName" name="last_name" type="text" class="form-control input-textbox" id="InputLastName"  placeholder="last name" [ngClass]="errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
             <p id="last-name-error" class="err text-danger" *ngIf=' errorMessage.isLastNameEmpty || !errorMessage.isLastNameValid' [innerHTML]="errorMessage.last_name_msg"></p>
           </div>
         <div class="form-group input-textbox-group">

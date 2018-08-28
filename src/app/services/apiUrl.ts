@@ -5,5 +5,8 @@ export const api = {
   },
   get register() {
     return this.base + 'register';
+  },
+  get resetSendEmail() {
+    return this.base + 'users/forgotPassword';
   }
 };
