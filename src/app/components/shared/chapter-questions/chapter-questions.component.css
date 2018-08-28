@@ -75,8 +75,23 @@ text-align: center;
 .delete{
   margin-left: 0.1%;
 }
-
-.question-h{
+.question-div{
+  margin-top:70px;
+  margin-bottom: 70px;
+  height: 70px;
+  width: 70%;
+  margin-left:15%;
+  background: #006FFF;
+  padding: 3px;
+  padding-left:5px;
+   color: #FFFFFF;	
+   font-family: Roboto;	
+   font-size: 18px;	
+   font-weight: bold;	
+   line-height: 21px;
+  border-radius:5px;
+}
+#question{
   width: 80%;
 }
 .buttons{
@@ -86,25 +101,14 @@ text-align: center;
   height: 40px;
 }
 .question{
+  margin-top:20px;
+  margin-bottom:10px;
   width: 70%;
   margin-left: 15%;
 }
-.question-div{
-    margin-top:20px;
-    margin-bottom: 10px;
-    height: 70px;
-    /* width: 70%; */
-    background: #006FFF;
-    padding: 3px;
-    padding-left:5px;
-     color: #FFFFFF;	
-     font-family: Roboto;	
-     font-size: 18px;	
-     font-weight: bold;	
-     line-height: 21px;
-    border-radius:5px;
-}
+
 .one{
+  /* margin-top: 10px; */
   margin-left: 0.1%;
   border: 1px solid #AEB5BB;
   border-radius: 5px;
@@ -174,7 +178,6 @@ text-align: center;
   border-radius: 5px;
   width:10%;
   height: 31px;
-
 }
 
 

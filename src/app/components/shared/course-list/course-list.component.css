@@ -24,14 +24,14 @@ text-align: center;
 .buttons-div{
    
     width: 70%;
-    margin-left: 16%;
+    margin-left: 15%;
     margin-top: 70px;
     margin-bottom: 50px;
 }
 .name-text{
     height: 29px;
-    width: 61%;
-    margin-left:1%;
+    width: 70%;
+    /* margin-left:1%; */
     border-radius: 5px;
 }
 .create-button{
@@ -42,7 +42,7 @@ text-align: center;
     line-height: 19px;
     height: 29px;
     width: 10%;
-    margin-left:2%;
+    margin-left:20%;
     border-radius: 5px;
 }
 .edit-button{
