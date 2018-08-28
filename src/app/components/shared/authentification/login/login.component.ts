@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
 import { LoginService } from 'src/app/services/authentificationService/login-service.service';
 import { User } from './user.model';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-
 export class LoginComponent implements OnInit {
-
   passType = 'password';
   user: User;
 
@@ -46,20 +44,26 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.checkData()) {
-      this.loginService.login(this.user).subscribe(res => {
-        if (!res) {
-          this.errorMessage.isEmailValid = false;
-          this.errorMessage.isPassValid = true;
-          this.errorMessage.msgEmail = `email or password incorrect`;
-        } else {
-          this.errorMessage.isEmailValid = true;
-          this.errorMessage.isPassValid = true;
+      this.loginService.login(this.user).subscribe(
+        res => {
+          if (!res) {
+            this.errorMessage.isEmailValid = false;
+            this.errorMessage.isPassValid = true;
+            this.errorMessage.msgEmail = `email or password incorrect`;
+          } else {
+            this.errorMessage.isEmailValid = true;
+            this.errorMessage.isPassValid = true;
 
-          localStorage.clear();
-          localStorage.setItem('user_token', res.token);
-          this.router.navigate(['/dashboard']);
+            localStorage.clear();
+            localStorage.setItem('user_token', res.token);
+            this.router.navigate(['/dashboard']);
+          }
+        },
+        error => {
+          console.log("eroare" + error.status);
+          return error;
         }
-      });
+      );
     } else {
       localStorage.clear();
       // log in rejected
@@ -79,11 +83,11 @@ export class LoginComponent implements OnInit {
     if (this.validation.checkEmpty(this.user.password)) {
       this.errorMessage.isPassEmpty = true;
       this.errorMessage.msgPass = 'password required';
-      console.log("parola" + this.user.password);
+      console.log('parola' + this.user.password);
       ok = false;
     } else {
       this.errorMessage.isPassEmpty = false;
-      console.log("SAdada");
+      console.log('SAdada');
     }
     return ok;
   }

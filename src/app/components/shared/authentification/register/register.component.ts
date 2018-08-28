@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from '../../../../services/validation/validation.service';
+import { NewUser } from './NewUser.model';
+import { RegisterService } from './../../../../services/RegisterService/register-service.service';
 
 @Component({
   selector: 'app-register',
@@ -9,15 +11,10 @@ import { ValidationService } from '../../../../services/validation/validation.se
 export class RegisterComponent implements OnInit {
 
   public isTermsChecked = false;
+  public tempTerms = true;
+  public passType = 'password';
 
-  public newUser = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    password: '',
-    passType: 'password',
-    agreeWithTerms: true
-  };
+  newUser: NewUser;
 
   public errorMessage = {
     isEmailEmpty: false,
@@ -36,20 +33,22 @@ export class RegisterComponent implements OnInit {
     genericErr_msg: 'O eroare generica nonoonon'
   };
 
-  constructor(private validation: ValidationService) {}
+  constructor(private validation: ValidationService,
+              private register: RegisterService) {
+    this.newUser = new NewUser();
+  }
 
   ngOnInit() {}
 
   setTerms(e) {
     this.isTermsChecked = e.target.checked;
-    this.newUser.agreeWithTerms = e.target.checked;
   }
 
   showHidePassword() {
-    if (this.newUser.passType === 'text') {
-        this.newUser.passType = 'password';
+    if (this.passType === 'text') {
+        this.passType = 'password';
       } else {
-        this.newUser.passType = 'text';
+        this.passType = 'text';
       }
   }
 
@@ -82,7 +81,6 @@ export class RegisterComponent implements OnInit {
       this.errorMessage.isPasswordEmpty = false;
     }
 
-    this.newUser.agreeWithTerms = this.isTermsChecked;
 
     if (!this.validation.isLetter(this.newUser.first_name) && !this.errorMessage.isFirstNameEmpty) {
       this.errorMessage.isFirstNameValid = false;
@@ -111,15 +109,17 @@ export class RegisterComponent implements OnInit {
      } else {
        this.errorMessage.isPasswordValid = true;
      }
-  }
+
+     this.tempTerms = this.isTermsChecked;
+    }
 
   createUser() {
     this.validateData();
     if (!this.errorMessage.isFirstNameEmpty && !this.errorMessage.isLastNameEmpty && !this.errorMessage.isEmailEmpty
-      && !this.errorMessage.isPasswordEmpty && this.newUser.agreeWithTerms && this.errorMessage.isFirstNameValid
+      && !this.errorMessage.isPasswordEmpty && this.isTermsChecked && this.errorMessage.isFirstNameValid
       && this.errorMessage.isLastNameValid && this.errorMessage.isEmailValid) {
       console.log('tat ii bun');
-      // send data to the server
+      this.register.register(this.newUser);
     } else {
       console.log('nu-i bun');
     }

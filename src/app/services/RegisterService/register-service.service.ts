@@ -4,33 +4,33 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { api } from '../apiUrl';
-import { User } from '../../components/shared/authentification/login/user.model';
+import { NewUser } from '../../components/shared/authentification/register/NewUser.model';
 
 @Injectable({
   providedIn: 'root'
 })
+export class RegisterService {
 
-export class LoginService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  login(user: User): Observable<User> {
-    return this.http.post<User>(api.login, user).pipe(
+  register(user: NewUser): Observable<NewUser> {
+    return this.http.post<NewUser>(api.register, user).pipe(
       map((res: Response ) => {
         console.log(res.status);
         return res;
       }),
-      catchError(this.handleError<User>('loginUser'))
+      catchError(this.handleError<NewUser>('registerUser'))
     );
   }
 
-  private handleError<T> (operation = 'operation') {
+  private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // Let the app keep running by returning an empty result.
-      return throwError(error);
+      return of(result as T);
     };
   }
 }
