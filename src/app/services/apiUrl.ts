@@ -8,5 +8,8 @@ export const api = {
   },
   get resetSendEmail() {
     return this.base + 'users/forgotPassword';
-  }
+  },
+  get allUsers() {
+    return this.base + 'users';
+  },
 };
