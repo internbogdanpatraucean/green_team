@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/services/validation/validation.service';
+import { ResetService } from 'src/app/services/ResetService/reset.service';
+import { UserIsResetting } from './userIsResetting.model';
 
 @Component({
   selector: 'app-reset',
@@ -7,16 +9,16 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
   styleUrls: ['./reset.component.css']
 })
 export class ResetComponent implements OnInit {
+
   isUserResetting = false;
   isEmailSentMessage = false;
+  passType1 = 'password';
+  passType2 = 'password';
 
-  public resetPassword = {
-    userEmail: '',
-    userNewPassword: '',
-    userConfirmPassword: '',
-    passType1: 'password',
-    passType2: 'password'
-  };
+  email = '';
+
+  user_resetting: UserIsResetting;
+
 
   errorMessage = {
     isEmailEmpty: false,
@@ -32,51 +34,51 @@ export class ResetComponent implements OnInit {
     generic_msg: ''
   };
 
-  constructor(private validation: ValidationService) {}
+  constructor(
+    private validation: ValidationService,
+    private reset: ResetService
+  ) {
+    this.user_resetting = new UserIsResetting();
+  }
 
   ngOnInit() {}
 
   showHidePassword1() {
-       if (this.resetPassword.passType1 === 'text') {
-        this.resetPassword.passType1 = 'password';
-      } else {
-        this.resetPassword.passType1 = 'text';
-      }
+    if (this.passType1 === 'text') {
+      this.passType1 = 'password';
+    } else {
+      this.passType1 = 'text';
+    }
   }
 
   showHidePassword2() {
-    if (this.resetPassword.passType2 === 'text') {
-     this.resetPassword.passType2 = 'password';
-   } else {
-     this.resetPassword.passType2 = 'text';
-   }
-}
-
-  isEmailExisting(): boolean {
-    // process request to the server
-    return this.resetPassword.userEmail === 'bogyp@yahoo.com';
+    if (this.passType2 === 'text') {
+      this.passType2 = 'password';
+    } else {
+      this.passType2 = 'text';
+    }
   }
 
   validateEmail(): boolean {
-    if (this.validation.checkEmpty(this.resetPassword.userEmail) || this.validation.isOnlySpaces(this.resetPassword.userEmail)) {
+    if (
+      this.validation.checkEmpty(this.email) ||
+      this.validation.isOnlySpaces(this.email)
+    ) {
       this.errorMessage.email_msg = 'required';
       this.errorMessage.isEmailEmpty = true;
       return false;
     } else {
       this.errorMessage.isEmailEmpty = false;
-      if (!this.isEmailExisting()) {
-        this.errorMessage.email_msg = 'email not found in our database';
-        this.errorMessage.isEmailValid = false;
-        return false;
-      } else {
-        return true;
-      }
+      return true;
     }
   }
 
   validatePassword(): boolean {
     // tslint:disable-next-line:max-line-length
-    if (this.validation.checkEmpty(this.resetPassword.userNewPassword) || this.validation.isOnlySpaces(this.resetPassword.userNewPassword)) {
+    if (
+      this.validation.checkEmpty(this.user_resetting.password) ||
+      this.validation.isOnlySpaces(this.user_resetting.password)
+    ) {
       this.errorMessage.pass_msg = 'required';
       this.errorMessage.isNewPassEmpty = true;
     } else {
@@ -84,47 +86,63 @@ export class ResetComponent implements OnInit {
     }
 
     // tslint:disable-next-line:max-line-length
-    if (this.validation.checkEmpty(this.resetPassword.userConfirmPassword) || this.validation.isOnlySpaces(this.resetPassword.userConfirmPassword)) {
+    if (
+      this.validation.checkEmpty(this.user_resetting.confirmPassword) ||
+      this.validation.isOnlySpaces(this.user_resetting.confirmPassword)
+    ) {
       this.errorMessage.confirm_pass_msg = 'required';
       this.errorMessage.isConfirmPassEmpty = true;
     } else {
       this.errorMessage.isConfirmPassEmpty = false;
     }
 
-    if (!this.validation.isPasswordValid(this.resetPassword.userNewPassword)
-       && !this.validation.checkEmpty(this.resetPassword.userNewPassword)) {
+    if (
+      !this.validation.isPasswordValid(this.user_resetting.password) &&
+      !this.validation.checkEmpty(this.user_resetting.password)
+    ) {
       this.errorMessage.pass_msg = 'the password is too weak';
       this.errorMessage.isNewPassValid = false;
     } else {
       this.errorMessage.isNewPassValid = true;
     }
 
+    if (
+      this.user_resetting.confirmPassword !==
+        this.user_resetting.password &&
+      !this.validation.checkEmpty(this.user_resetting.password) &&
+      !this.validation.checkEmpty(this.user_resetting.confirmPassword)
+    ) {
+      this.errorMessage.confirm_pass_msg = 'the passwords does not match';
+      this.errorMessage.isConfirmPassValid = false;
+      return false;
+    } else {
       if (
-        (this.resetPassword.userConfirmPassword !==
-        this.resetPassword.userNewPassword) && !this.validation.checkEmpty(this.resetPassword.userNewPassword)
-         && !this.validation.checkEmpty(this.resetPassword.userConfirmPassword)
+        !this.validation.checkEmpty(this.user_resetting.password) &&
+        !this.validation.checkEmpty(this.user_resetting.confirmPassword)
       ) {
-        this.errorMessage.confirm_pass_msg = 'the passwords does not match';
-        this.errorMessage.isConfirmPassValid = false;
-        return false;
-      } else {
-        if (!this.validation.checkEmpty(this.resetPassword.userNewPassword)
-        && !this.validation.checkEmpty(this.resetPassword.userConfirmPassword)) {
         this.errorMessage.isConfirmPassValid = true;
-        return true; } else {return false; }
+        return true;
+      } else {
+        return false;
       }
+    }
   }
 
   onRequestResetPassword() {
     if (this.validateEmail()) {
-      this.errorMessage.generic_msg = 'An email was sent to your adress';
-      this.errorMessage.isGenericError = true;
-      this.isUserResetting = true;
-      this.isEmailSentMessage = true;
-      // here we will process the request to reset
-      console.log('validare email ok');
-    } else {
-      console.log('validare email fara succes');
+      this.reset.sendEmail(this.email).subscribe(
+        succes => {
+          this.errorMessage.generic_msg = 'An email was sent to your adress';
+          this.errorMessage.isGenericError = true;
+          this.isEmailSentMessage = true;
+          // this.isUserResetting = true;
+        },
+        error => {
+          this.errorMessage.generic_msg = error.error;
+          this.errorMessage.isGenericError = true;
+          this.isEmailSentMessage = false;
+        }
+      );
     }
   }
 
