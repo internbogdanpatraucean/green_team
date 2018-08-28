@@ -40,3 +40,11 @@
     text-align: center;
     padding-top: 1px;
 }
+
+.current-page {
+    color: #00217A;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 19px;
+}

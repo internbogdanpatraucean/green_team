@@ -27,14 +27,14 @@
         </div>
         <div class="form-group input-textbox-group">
           <label for="InputPassword"></label>
-          <input [(ngModel)]="newUser.password" name="password" type="{{ newUser.passType}}" class="form-control input-textbox" id="InputPassword" placeholder="new password" [ngClass]="errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
+          <input [(ngModel)]="newUser.password" name="password" type="{{ passType}}" class="form-control input-textbox" id="InputPassword" placeholder="new password" [ngClass]="errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid ? 'input-textbox input-textbox-err' : 'input-textbox'">
           <button class="btn btn-show-pass" (click)="showHidePassword()"><i class="fa fa-eye"></i></button>
           <p id="pass-error" class="err text-danger" *ngIf='errorMessage.isPasswordEmpty || !errorMessage.isPasswordValid' [innerHTML]="errorMessage.password_msg"></p>
         </div>
         <button type="submit" class="btn btn-primary register-btn" (click)="createUser()">CREATE ACCOUNT</button>
         <div class="form-check check-square">
             <input  type="checkbox" class="form-check-input" id="exampleCheck" (change)="setTerms($event)">
-            <label class="form-check-label check-me" for="exampleCheck" [ngClass]="newUser.agreeWithTerms ? 'check-me check-me-ok' : 'check-me check-me-error'"> I agree with Terms & Conditions</label>
+            <label class="form-check-label check-me" for="exampleCheck" [ngClass]="tempTerms ? 'check-me check-me-ok' : 'check-me check-me-error'"> I agree with Terms & Conditions</label>
           </div>
       </form>
     </div>

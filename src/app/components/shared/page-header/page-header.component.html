@@ -16,18 +16,25 @@
       <div class="navbar-default">
         <ul class="nav navbar-nav navbar-right">
           <!--Profile Picture-->
-          <li> <img class="profile-pic" src="{{User.profilePicture}}" width ="40px" height="40px"></li>
+          <li> <img class="profile-pic" src="{{user.profilePic}}" width ="40px" height="40px"></li>
           <!--Username-->
-          <li><a routerLink="/account" class="menu-option">{{User.username}}</a></li>
+          <li><a routerLink="/account" [ngClass]="isOnAccountPage ? 'menu-option current-page':'menu-option'">{{user.username}}</a></li>
           <!--Score bell-->
           <li><p class="bell"><i class="far fa-bell"></i></p></li>
           <!--User Score-->
-          <li><p class="user-score">{{User.score}}</p></li>
+          <li><p class="user-score">{{user.score}}</p></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" style="margin-right: 70px">
-          <li><a routerLink="/courses" class="menu-option">Courses</a></li>
+
+        <!--if user is not an admin-->
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 70px" *ngIf="!user.isAdmin">
+          <li><a [routerLink]="['/courses']" [ngClass]="isOnCoursePage ? 'menu-option current-page':'menu-option'">Courses</a></li>
           <li><a href="#" class="menu-option">What's new</a></li>
           <li><a href="#" class="menu-option">About</a></li>
+        </ul>
+        <!--if user is an admin-->
+        <ul class="nav navbar-nav navbar-right" style="margin-right: 70px" *ngIf="user.isAdmin">
+          <li ><a [routerLink]="['/courses']" [ngClass]="isOnCoursePage ? 'menu-option current-page':'menu-option'">Courses</a></li>
+          <li ><a [routerLink]="['/users']"  [ngClass]="isOnUsersPage ? 'menu-option current-page' : 'menu-option'">Users</a></li>
         </ul>
       </div>
     </div>

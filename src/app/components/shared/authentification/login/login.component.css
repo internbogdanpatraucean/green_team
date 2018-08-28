@@ -2,6 +2,7 @@
   /* The image used */
   background-image: url("../../../../../assets/bg_image_authentification.png");
   background-color: hsl(224, 32%, 12%);
+  max-height: 900;
 
   /* Full height */
   height: 100%;
