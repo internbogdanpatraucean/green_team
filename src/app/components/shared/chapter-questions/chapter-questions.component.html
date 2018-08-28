@@ -1,4 +1,3 @@
-
 <!--
   This is the component that lists the questions for a chapter. The answers for the
   questions should be checked before being able to pass next. There are links at the
@@ -6,7 +5,6 @@
   the last chapter, the link should go to a screen that displays a finalization
   message - this message can be part of this same component.
 -->
-<app-page-header></app-page-header>
 <form action="" class="primary-form">
 
   <div class="chapter-image">
@@ -16,38 +14,33 @@
 
   <div class="container">
     <div class="row buttons-div">
-      <input id="categoryName" type="text" class="name-text" [(ngModel)]="categoryName" name="name" #test placeholder="Give me a category name...">
-      <button class="create-button" (click)="onCreateButton(test)">Create</button>
-
+      <input id="categoryName" type="text" class="name-text" [(ngModel)]="categoryName" name="name" placeholder="Give me a category name...">
+      <button class="create-button" (click)="onCreateButton($event)">Create</button>
     </div>
     <div class="row quiz">
-      <div class="question" *ngFor="let question of questions,let index=index">
-        <div class="question-div ">
-          <h3 class="question-h">
-            <!-- <span id="question ">Q: {{question.question}}</span> -->
-            <span id="question ">Q: {{question.content}}</span>
+      <div class="question-div" *ngFor="let question of questions,let index=index">
+
+        <div class="question ">
+          <h3>
+            <span id="question ">Q: {{question.question}}</span>
           </h3>
           <div class="buttons">
-            <button class="edit-button edit" (click)="onEditButton(question)">
+            <button class="edit-button" (click)="onEditButton(category)">
               <i class="far fa-edit"></i>
             </button>
-            <button class="edit-button delete" (click)="onDeleteButton(question)">
+            <button class="delete-button" (click)="onDeleteButton(category)">
               <i class="fas fa-trash-alt"></i>
             </button>
           </div>
         </div>
-        <div class="row one" *ngFor="let answer of question.answers; let j=index">
+
+        <div class="row one" *ngFor="let answer of question.answers">
           <div class="row radio answer-div">
             <label class="answer-label">
-              <input class="answer" type="radio" required ngModel[value]="answer.correct" name="question"  >{{answer.answer}}</label>
-              <input class="answer" type="text" [(ngModel)]="answer.answer" name="questionName" >
-              <button class="bnt btn-primary" (click)="addQuestion(index)">Add answer</button>
-            </div>
-          <!-- <div class="row radio answer-div">
-              <label class="answer-label">
-               {{answer.text}}</label>
-            </div> -->
+              <input class="answer" type="radio" name={{index}} value={{answer.id}} [(ngModel)]="question.selectedAnswer">{{answer.text}}</label>
+          </div>
         </div>
+        
       </div>
     </div>
     <button class="submitButton" (click)="onSubmitClick()">Submit</button>

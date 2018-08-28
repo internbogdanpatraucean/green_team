@@ -55,7 +55,7 @@ text-align: center;
     margin-left:5%;
     margin-top: -29px; 
     border-radius: 5px;
-    /* background-color: #006FFF; */
+    background-color: #006FFF;
     color: #FFFFFF;	
     font-family: Roboto;	
     font-size: 16px;	
@@ -73,7 +73,7 @@ text-align: center;
 .name-text{
     height: 29px;
     width: 70%;
-    margin-left:1%;
+    /* margin-left:1%; */
     border-radius: 5px;
 }
 .create-button{
