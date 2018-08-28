@@ -128,7 +128,7 @@ export class RegisterComponent implements OnInit {
         },
         error => {
             this.errorMessage.isGenericError = true;
-            if (error.error === 'Validation error') {
+            if (error.error === 'HereValidation error') {
               this.errorMessage.genericErr_msg = 'Email already registered';
             }
         }
