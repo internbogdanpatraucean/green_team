@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { splitClasses, MapType } from '@angular/compiler';
 import { Category } from './dashboard.model';
 import { splitAtColon } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
+import { CategoryService } from './../../services/CategoryService/category.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,15 +11,37 @@ import { splitAtColon } from '@angular/compiler/src/util';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
   searchName = '';
   categoryName = '';
   editCategoryName = '';
   index = 6;
+  newCategories: Category[];
+
+  constructor(
+    private router: Router,
+    private catService: CategoryService
+  ) {
+    this.catService.getCategory().subscribe(
+      data => {
+        console.log(data);
+        // console.log("merge");
+        this.categories = data;
+        this.newCategories = this.categories.slice(0, 6);
+
+
+      },
+      error => {
+        console.log(error);
+        console.log("Nu merge");
+      }
+    );
+
+  }
 
   colours = [' #00F2FE', ' #4FACFE', ' #B465DA', '#CF6CC9', '#EE609C', '#EE609C', '#F09819', '#FF5858'];
 
-
+  ngOnInit() {
+  }
   getRandomColor() {
     let firstGradient = this.randomNumber(10, 50);
     return "linear-gradient(90deg, " + this.colours[this.randomNumber(0, 8)] + " " + firstGradient + "%, " + this.colours[this.randomNumber(0, 5)] + ")"
@@ -30,10 +54,9 @@ export class DashboardComponent implements OnInit {
   categories: Category[] = [
 
   ];
-  newCategories: Category[] = this.categories.slice(0, 6);
+  // newCategories: Category[] = this.categories.slice(0, 6);
 
-  ngOnInit() {
-  }
+
 
   onClickSearch() {
     this.newCategories = [];
@@ -73,29 +96,59 @@ export class DashboardComponent implements OnInit {
       if (this.categories.find((item) => item.name === this.categoryName.toUpperCase()) != null) {
         return;
       }
-      this.categories.push(new Category(this.categoryName.toUpperCase(), '#', this.getRandomColor()));
+
+      this.catService.setCategory(new Category(this.categoryName.toUpperCase(), this.getRandomColor())).subscribe(
+        succes => {
+          this.categories.push(succes);
+        },
+        error => {
+
+          return error;
+        }
+      );
     }
     this.newCategories = this.categories.slice(0, 6);
-    console.log(this.categories);
   }
+
 
   onEditButton(category: Category) {
     category.checked = !category.checked;
-    if (category.afterEdit !== '') {
+    if (category.afterEdit != undefined) {
       {
+        debugger
         if (this.categories.find((item) => item.name === category.afterEdit.toUpperCase()) != null) {
           return;
         }
       }
-      category.name = category.afterEdit.toUpperCase();
+      this.catService.editCategory(category).subscribe(
+        succes => {
+        },
+        error => {
+
+          return error;
+        }
+      );
     }
   }
- 
+
   onDeleteButton(category: Category) {
     console.log("dddfaf");
+    this.catService.deleteCategory(category).subscribe(
+      succes => {
+      },
+      error => {
 
-    this.newCategories.splice(this.newCategories.indexOf(category),1);
-    this.categories.splice(this.categories.indexOf(category),1);
+        return error;
+      }
+    );
+    // this.catService.deleteCategory(this.categories.splice(this.categories.indexOf(category), 1)).subscribe(
+    //   succes => {
+    //   },
+    //   error => {
+
+    //     return error;
+    //   }
+    // );
   }
 }
 

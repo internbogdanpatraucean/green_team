@@ -25,20 +25,22 @@ import { ChapterComponent } from './components/shared/chapter/chapter.component'
 import { CourseFinishComponent } from './components/shared/course-finish/course-finish.component';
 
 
+
+
 const routes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'reset', component: ResetComponent},
-  { path: 'account', component: MyAccountComponent ,canActivate: [AuthGuardService] },
-  { path: 'users', component: UserListComponent ,canActivate: [AuthGuardService] },
-  { path: 'users/:id', component: UserComponent ,canActivate: [AuthGuardService] },
-  { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuardService] },
-  { path: 'courses', component: CourseListComponent ,canActivate: [AuthGuardService] },
-  { path: 'course-finish', component: CourseFinishComponent,canActivate: [AuthGuardService]},
-  { path: 'chapters-list', component: ChapterListComponent ,canActivate: [AuthGuardService] },
-  { path: 'chapter', component: ChapterComponent ,canActivate: [AuthGuardService]},
-  { path: 'chapter-questions', component: ChapterQuestionsComponent ,canActivate: [AuthGuardService] },
+  { path: 'account', component: MyAccountComponent /*,canActivate: [AuthGuardService] */},
+  { path: 'users', component: UserListComponent /*,canActivate: [AuthGuardService] */},
+  { path: 'users/:id', component: UserComponent /*,canActivate: [AuthGuardService]*/ },
+  { path: 'dashboard', component: DashboardComponent /*,canActivate: [AuthGuardService] */},
+  { path: 'courses', component: CourseListComponent /*,canActivate: [AuthGuardService] */},
+  { path: 'course-finish', component: CourseFinishComponent/*,canActivate: [AuthGuardService]*/},
+  { path: 'chapters-list', component: ChapterListComponent /*,canActivate: [AuthGuardService]*/ },
+  { path: 'chapter', component: ChapterComponent /*,canActivate: [AuthGuardService]*/},
+  { path: 'chapter-questions', component: ChapterQuestionsComponent/* ,canActivate: [AuthGuardService]*/ },
 
   {
     path: 'courses/:id',
@@ -70,6 +72,7 @@ const routes: Routes = [
     ResetComponent,
     ChapterComponent,
     CourseFinishComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from '../../../../services/validation/validation.service';
 import { NewUser } from './NewUser.model';
-import { RegisterService } from './../../../../services/RegisterService/register-service.service';
+import { RegisterService } from '../../../../services/RegisterService/register-service.service';
 
 @Component({
   selector: 'app-register',

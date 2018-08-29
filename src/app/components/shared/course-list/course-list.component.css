@@ -97,7 +97,19 @@ font-family:Arial;
 font-size:25px;
 text-align: center;
 }
-
+.course-name-p{
+    color: #06102B;	
+    font-family: Roboto;	
+    font-size: 14px;	
+    font-weight: bold;	
+    line-height: 21px;
+}
+.course-name-p{
+    color: #AEB5BB;	
+    font-family: Roboto;	
+    font-size: 10px;	
+    line-height: 16px;
+}
 .button-discover{
     /* display: flex; */
     /* position: absolute; */
