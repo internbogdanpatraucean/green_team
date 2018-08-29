@@ -6,6 +6,13 @@ export const api = {
   get register() {
     return this.base + 'register';
   },
+
+  get category() {
+    return this.base + 'categories';
+  },
+  get course(){
+    return this.base+'courses';
+  },
   get resetSendEmail() {
     return this.base + 'users/forgotPassword';
   },

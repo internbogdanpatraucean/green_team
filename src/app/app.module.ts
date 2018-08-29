@@ -24,12 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChapterComponent } from './components/shared/chapter/chapter.component';
 import { CourseFinishComponent } from './components/shared/course-finish/course-finish.component';
 
-// http://192.168.151.17:4200/api/users/reset/ZFPNu7dZQaofoDb
+
 const routes: Routes = [
   { path: 'authentification', component: AuthentificationComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'reset', component: ResetComponent},
   { path: 'api/users/reset', component: ResetComponent},
   { path: 'account', component: MyAccountComponent , canActivate: [AuthGuardService] },
   { path: 'users', component: UserListComponent , canActivate: [AuthGuardService] },
@@ -71,6 +70,7 @@ const routes: Routes = [
     ResetComponent,
     ChapterComponent,
     CourseFinishComponent,
+    
   ],
   imports: [
     BrowserModule,

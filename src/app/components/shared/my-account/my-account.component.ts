@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ValidationService } from 'src/app/services/validation/validation.service';
+import { ValidationService } from '../../../services/validation/validation.service';
 import { StartedCourse } from './my-account-courses.model';
 import { Router } from '@angular/router';
 

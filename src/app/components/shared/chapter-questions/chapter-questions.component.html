@@ -18,29 +18,30 @@
       <button class="create-button" (click)="onCreateButton($event)">Create</button>
     </div>
     <div class="row quiz">
-      <div class="question-div" *ngFor="let question of questions,let index=index">
+      <div class="quiz-div">
+        <div class="question-div" *ngFor="let question of questions,let index=index">
 
-        <div class="question ">
-          <h3>
-            <span id="question ">Q: {{question.question}}</span>
-          </h3>
-          <div class="buttons">
-            <button class="edit-button" (click)="onEditButton(category)">
-              <i class="far fa-edit"></i>
-            </button>
-            <button class="delete-button" (click)="onDeleteButton(category)">
-              <i class="fas fa-trash-alt"></i>
-            </button>
+          <div class="question ">
+            <h3>
+              <span id="question ">Q: {{question.question}}</span>
+            </h3>
+            <div class="buttons">
+              <button class="edit-button" (click)="onEditButton(category)">
+                <i class="far fa-edit"></i>
+              </button>
+              <button class="edit-button delete" (click)="onDeleteButton(category)">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="row one" *ngFor="let answer of question.answers">
+            <div class="row radio answer-div">
+              <label class="answer-label">
+                <input class="answer" type="radio" name={{index}} value={{answer.id}} [(ngModel)]="question.selectedAnswer">{{answer.text}}</label>
+            </div>
           </div>
         </div>
-
-        <div class="row one" *ngFor="let answer of question.answers">
-          <div class="row radio answer-div">
-            <label class="answer-label">
-              <input class="answer" type="radio" name={{index}} value={{answer.id}} [(ngModel)]="question.selectedAnswer">{{answer.text}}</label>
-          </div>
-        </div>
-        
       </div>
     </div>
     <button class="submitButton" (click)="onSubmitClick()">Submit</button>

@@ -32,9 +32,10 @@
           </div>
 
           <div class="row Descriere-div">
-            <p> {{course.name}} </p>
+            <p class="course-name-p" > {{course.name}} </p>
             <input id="edit-id" type="text" class="edit-input" *ngIf="course.checked" [(ngModel)]="course.afterEdit" name="editCourseName" placeholder="Course..">
-            <p>{{course.descriere}}</p>
+            <p class="course-desc-p" >{{course.descriere}}</p>
+            <label class=" categoy-name" for="">dgsvsv</label>
           </div>
         </div>
       <!-- < //a> -->
