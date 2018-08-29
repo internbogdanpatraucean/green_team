@@ -22,15 +22,16 @@ export class RegisterService {
      catchError(this.handleError<NewUser>('registerUser'))
    );
  }
+  private handleError<T> (operation = 'operation') {
+    return (error: any): Observable<T> => {
 
- private handleError<T> (operation = 'operation') {
-   return (error: any): Observable<T> => {
 
      // TODO: send the error to remote logging infrastructure
      console.error(error); // log to console instead
 
-     // Let the app keep running by returning an empty result.
-     return throwError(error);
-   };
- }
+      // Let the app keep running by returning an empty result.
+      return throwError(error);
+    };
+  }
 }
+

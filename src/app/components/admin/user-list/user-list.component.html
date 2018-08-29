@@ -43,13 +43,13 @@
         <!--Profile picture-->
         <div>
           <div class="user-pic col-xs-2">
-            <img src="{{user.userPicture}}" width="50" height="50">
+            <img src="{{user.userImage}}" width="50" height="50">
           </div>
 
           <!--Username and email-->
           <div class="col-xs-10">
             <p class="username">{{user.userName}}</p>
-            <p class="user-email">{{user.userEmail}}</p>
+            <p class="user-email">{{user.email}}</p>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
       <!--date created-->
       <div class="col-xs-2">
         <div class="user-date">
-          <p class="user-date-text">{{user.userDate}}</p>
+          <p class="user-date-text">{{user.createdAt}}</p>
         </div>
       </div>
 

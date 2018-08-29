@@ -18,7 +18,7 @@ export class ValidationService {
   }
 
   isEmailValid(input: string): boolean {
-    const verifier = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}/);
+    const verifier = new RegExp(/^[a-zA-Z0-9_\.\+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-\.]+/);
     return verifier.test(input);
   }
 
