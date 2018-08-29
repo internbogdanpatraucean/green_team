@@ -15,29 +15,30 @@
 
   <div class="container">
     <div class="row buttons-div">
-      <input id="courseName" type="text" class="name-text" [(ngModel)]="courseName" name="name" placeholder="Give me a category name...">
+      <input id="courseName" type="text" class="name-text" [(ngModel)]="courseName" name="name" placeholder="Give me a course name...">
       <button class="create-button" (click)="onCreateButton($event)">Create</button>
 
     </div>
     <div class="course-div">
       <!-- <a [href]="course.adresa"> -->
-        <div action="" class="col-xs-6 flex-container" *ngFor="let course of newCourse">
-          <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + course.imagePath + ')'}">
-            <button class="edit-button" (click)="onEditButton(course)">
-              <i class="far fa-edit"></i>
-            </button>
-            <button id="del-button" class="edit-button" (click)="onDeleteButton(course)">
-              <i class="fas fa-trash-alt"></i>
-            </button>
-          </div>
-
-          <div class="row Descriere-div">
-            <p class="course-name-p" > {{course.name}} </p>
-            <input id="edit-id" type="text" class="edit-input" *ngIf="course.checked" [(ngModel)]="course.afterEdit" name="editCourseName" placeholder="Course..">
-            <p class="course-desc-p" >{{course.descriere}}</p>
-            <label class=" categoy-name" for="">dgsvsv</label>
-          </div>
+      <div action="" class="col-xs-6 flex-container" *ngFor="let course of newCourse">
+        <div class="row Image-div" [ngStyle]="{'background-image': 'url(' + course.imagePath + ')'}">
+          <button class="edit-button" (click)="onEditButton(course)">
+            <i class="far fa-edit"></i>
+          </button>
+          <button id="del-button" class="edit-button" (click)="onDeleteButton(course)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
         </div>
+
+        <div class="row Descriere-div">
+          <p class="course-name-p1"> {{course.name}} </p>
+          <input id="edit-id" type="text" class="edit-input" *ngIf="course.checked" [(ngModel)]="course.afterEdit" name="editCourseName"
+            placeholder="Course..">
+          <p class="course-desc-p">{{course.descriere}}</p>
+          <label class=" course-name-label" for="">dgsvsv</label>
+        </div>
+      </div>
       <!-- < //a> -->
     </div>
   </div>

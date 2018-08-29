@@ -16,7 +16,11 @@ export class DashboardComponent implements OnInit {
   editCategoryName = '';
   index = 6;
   newCategories: Category[];
+  // user=prompt("1 or 2");
+  // if(this.user != '' && this.user==1){
+  //   (<HTMLInputElement>document.getElementById("categoryName")).style.visibility='hidden';
 
+  // }
   constructor(
     private router: Router,
     private catService: CategoryService
