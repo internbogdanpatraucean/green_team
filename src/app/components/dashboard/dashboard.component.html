@@ -27,7 +27,6 @@
 
     </div>
     <div class="row category-div">
-      <!-- <a id="course1" [href]="category.adresa"> -->
       <div class="col-xs-4 flex-container" [ngStyle]="{background:category.color}" *ngFor="let category of newCategories ">
         <button class="edit-button" (click)="onEditButton(category)">
           <i class="far fa-edit"></i>
@@ -35,10 +34,9 @@
         <button class="delete-button" (click)="onDeleteButton(category)">
           <i class="fas fa-trash-alt"></i>
         </button>
-        <p id="categoryName-paragraf" class="categoryName-paragraf">{{category.name}}</p>
+        <p id="categoryName-paragraf" class="categoryName-paragraf"><a [routerLink]="['/courses/', category.id ]"  style="text-decoration: none;background-color:transparent;color:white">{{category.name}}</a></p>
         <input id="edit-id" type="text" class="edit-input" *ngIf="category.checked" [(ngModel)]="category.afterEdit" name="editCategoryName" placeholder="Category..">
       </div>
-      <!-- </a> -->
     </div>
   </div>
   <button class="col-xs-12 button-discover" (click)="onClickDiscover()">Discover more</button>

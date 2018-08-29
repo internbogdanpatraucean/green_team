@@ -97,7 +97,7 @@ font-family:Arial;
 font-size:25px;
 text-align: center;
 }
-.course-name-p{
+.course-name-p1{
     color: #06102B;	
     font-family: Roboto;	
     font-size: 14px;	
@@ -109,6 +109,13 @@ text-align: center;
     font-family: Roboto;	
     font-size: 10px;	
     line-height: 16px;
+}
+.course-name-label{
+    background-color: #006FFF;
+    color: #FFFFFF;	
+    font-family: Roboto;	
+    font-size: 8px;	
+    line-height: 9px;
 }
 .button-discover{
     /* display: flex; */

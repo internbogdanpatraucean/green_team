@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'account', component: MyAccountComponent , canActivate: [AuthGuardService] },
   { path: 'users', component: UserListComponent , canActivate: [AuthGuardService] },
   { path: 'users/:id', component: UserComponent , canActivate: [AuthGuardService] },
+  { path: 'category/:categoryId', component: CourseComponent , canActivate: [AuthGuardService] },
   { path: 'dashboard', component: DashboardComponent , canActivate: [AuthGuardService] },
   { path: 'courses', component: CourseListComponent , canActivate: [AuthGuardService] },
   { path: 'course-finish', component: CourseFinishComponent, canActivate: [AuthGuardService]},
@@ -42,7 +43,7 @@ const routes: Routes = [
 
   {
     path: 'courses/:id',
-    component: ChapterListComponent, canActivate: [AuthGuardService]
+    component: CourseListComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'courses/:courseId/:chapterId',

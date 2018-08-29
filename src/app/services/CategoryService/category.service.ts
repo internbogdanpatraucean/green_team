@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { api } from '../apiUrl';
 import { throwError } from 'rxjs';
 import { Category } from './../../components/dashboard/dashboard.model';
-// import {afterEdit} from './../../components/dashboard/dashboard.model';
 
 @Injectable({
   providedIn: 'root'

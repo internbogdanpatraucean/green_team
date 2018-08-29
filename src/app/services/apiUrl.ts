@@ -10,8 +10,8 @@ export const api = {
   get category() {
     return this.base + 'categories';
   },
-  get course(){
-    return this.base+'courses';
+  get course() {
+    return this.base + 'categories/courses';
   },
   get resetSendEmail() {
     return this.base + 'users/forgotPassword';
